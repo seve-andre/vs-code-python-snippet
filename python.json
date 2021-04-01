@@ -1,0 +1,638 @@
+{
+	"for": {
+		"prefix": "for.Py",
+		"body": [
+			"for $1 in $2:",
+			"    $3"
+		],
+		"description": "for"
+	},
+	"forRange": {
+		"prefix": "for.RangePy",
+		"body": [
+			"for $1 in range($2):",
+			"    $3"
+		],
+		"description": "for with range(0, n-1)"
+	},
+	"while": {
+		"prefix": "whilePy",
+		"body": [
+			"while $1:",
+			"    $2"
+		],
+		"description": "while"
+	},
+	"if": {
+		"prefix": "if.Py",
+		"body": [
+			"if $1:",
+			"    $2"
+		],
+		"description": "if"
+	},
+	"ifElse": {
+		"prefix": "if_ElsePy",
+		"body": [
+			"if $1:",
+			"    $2",
+			"else:",
+			"    $3"
+		],
+		"description": "ifElse"
+	},
+	"elif": {
+		"prefix": "elifPy",
+		"body": [
+			"if $1:",
+			"    $2",
+			"elif $3:",
+			"    $4"
+		],
+		"description": "elif"
+	},
+	"emptyList": {
+		"prefix": "List_EmptyPy",
+		"body": [
+			"${1:list_name} = []"
+		],
+		"description": "emptyList"
+	},
+	"List": {
+		"prefix": "List.Py",
+		"body": [
+			"${1:list_name} = [$2]"
+		],
+		"description": [
+			"List items are ordered, changeable and allow duplicate values",
+			"List items are indexed, the first item has index [0], the second item has index [1] etc."
+		]
+	},
+	"dict": {
+		"prefix": "dictPy",
+		"body": [
+			"${1:dictionary_name} = {",
+			"    $2: $3,",
+			"    $4: $5",
+			"}"
+		],
+		"description": [
+			"A dictionary is a collection which is ordered (As of Python version 3.7, dictionaries are ordered.",
+			"In Python 3.6 and earlier, dictionaries are unordered), changeable and does not allow duplicates.",
+			"Dictionary items are presented in key:value pairs, and can be referred to by using the key name."
+		]
+	},
+	"print": {
+		"prefix": "print.Py",
+		"body": [
+			"print($1)"
+		],
+		"description": "print"
+	},
+	"printString": {
+		"prefix": "print_StrPy",
+		"body": [
+			"print(\"$1\")"
+		],
+		"description": "printString"
+	},
+	"printSep": {
+		"prefix": "print_SepPy",
+		"body": [
+			"print($1, $2, sep=\"$3\")"
+		],
+		"description": "printSep"
+	},
+	"printEnd": {
+		"prefix": "print_EndPy",
+		"body": [
+			"print($1, end=\"$2\")"
+		],
+		"description": "printEnd"
+	},
+	"def": {
+		"prefix": "defPy",
+		"body": [
+			"def ${1:function_name}($2):",
+			"    $3 "
+		],
+		"description": "def"
+	},
+	"castInt": {
+		"prefix": "cast.IntPy",
+		"body": [
+			"int($1)"
+		],
+		"description": "castInt"
+	},
+	"castFloat": {
+		"prefix": "castFloatPy",
+		"body": [
+			"float($1)"
+		],
+		"description": "castFloat"
+	},
+	"castStr": {
+		"prefix": "cast.StrPy",
+		"body": [
+			"str($1)"
+		],
+		"description": "castStr"
+	},
+	"tuple": {
+		"prefix": "tuplePy",
+		"body": [
+			"${1:tuplename} = ($2, $3)"
+		],
+		"description": [
+			"A tuple is a collection which is ordered, unchangeable and allow duplicate values",
+			"Tuple items are indexed, the first item has index [0], the second item has index [1] etc."
+		]
+	},
+	"set": {
+		"prefix": "setPy",
+		"body": [
+			"${1:setname} = {$2, $3}"
+		],
+		"description": "Set items are unordered (so you cannot be sure in which order the items will appear), unchangeable and do not allow duplicate values."
+	},
+	"class": {
+		"prefix": "classPy",
+		"body": [
+			"class ${1:ClassName}:",
+			"    $2"
+		],
+		"description": "class"
+	},
+	"tryExceptEmpty": {
+		"prefix": "try.Except.EmptyPy",
+		"body": [
+			"try:",
+			"    $1",
+			"except:",
+			"    $2"
+		],
+		"description": "tryExceptEmpty"
+	},
+	"tryExcept": {
+		"prefix": "try.ExceptPy",
+		"body": [
+			"try:",
+			"    $1",
+			"except $2:",
+			"    $3"
+		],
+		"description": "tryExcept"
+	},
+	"input": {
+		"prefix": "inputPy",
+		"body": [
+			"input($1)"
+		],
+		"description": "input"
+	},
+	"multiPoundComment": {
+		"prefix": "comment.Multi.PoundPy",
+		"body": [
+			"# $1",
+			"# $2"
+		],
+		"description": "multiPoundComment"
+	},
+	"multiLineComment": {
+		"prefix": "comment.Multi.LinePy",
+		"body": [
+			"\"\"\"",
+			"$1",
+			"$2",
+			"\"\"\""
+		],
+		"description": "multiLineComment"
+	},
+	"type": {
+		"prefix": "typePy",
+		"body": [
+			"type($1)"
+		],
+		"description": "You can get the data type of a variable with the type() function."
+	},
+	"oneParamLambda": {
+		"prefix": "Lambda.one.ParamPy",
+		"body": [
+			"lambda $1 : $1"
+		],
+		"description": [
+			"A lambda function is a small anonymous function.",
+			"A lambda function can take any number of arguments, but can only have one expression."
+		]
+	},
+	"multiParamLambda": {
+		"prefix": "Lambda.multi.ParamPy",
+		"body": [
+			"lambda $1 $2 : $3 $5 $4"
+		],
+		"description": [
+			"A lambda function is a small anonymous function.",
+			"A lambda function can take any number of arguments, but can only have one expression."
+		]
+	},
+	"openFileReading": {
+		"prefix": "open.File.ReadingPy",
+		"body": [
+			"open(\"$1\")"
+		],
+		"description": "openFileReading"
+	},
+	"openFileOptions": {
+		"prefix": "open.File.OptionsPy",
+		"body": [
+			"open(\"${1:filename}\", \"${2:rwax.tb}\")"
+		],
+		"description": "openFileOptions"
+	},
+	"readLine": {
+		"prefix": "readLinePy",
+		"body": [
+			"${1:filename}.readline()"
+		],
+		"description": "Reads first line of a text if you call it once, first and second if you call it twice and so on"
+	},
+	"filter": {
+		"prefix": "filterPy",
+		"body": [
+			"filter(${1:function},${2:iterable})"
+		],
+		"description": "filter"
+	},
+	"removeFile": {
+		"prefix": "remove.FilePy",
+		"body": [
+			"import os",
+			"os.remove(\"$1\")"
+		],
+		"description": "removeFile"
+	},
+	"currentWorkingDIrectory": {
+		"prefix": "current.Working.DirPy",
+		"body": [
+			"import os",
+			"os.getcwd()"
+		],
+		"description": "currentWorkingDIrectory"
+	},
+	"removeFolder": {
+		"prefix": "remove.FolderPy",
+		"body": [
+			"import os",
+			"os.rmdir(\"$1\")"
+		],
+		"description": "removeFolder"
+	},
+	"slicing": {
+		"prefix": "slicingPy",
+		"body": [
+			"${1:list/string}[${2:start}:${3:stop}]"
+		],
+		"description": "slicing"
+	},
+	"slicingStep": {
+		"prefix": "slicing.StepPy",
+		"body": [
+			"${1:list/string}[${2:start}:${3:stop}:{$4:step}]"
+		],
+		"description": "slicingStep"
+	},
+	"numpy": {
+		"prefix": "import.numPy",
+		"body": [
+			"import numpy as np"
+		],
+		"description": "numpy"
+	},
+	"numpyArray": {
+		"prefix": "numpy.ArrayPy",
+		"body": [
+			"$1 = np.array([$2])"
+		],
+		"description": "numpyArray"
+	},
+	"numpyDataType": {
+		"prefix": "numpy.DataTypePy",
+		"body": [
+			"$1.dtype"
+		],
+		"description": "numpyDataType"
+	},
+	"importAll": {
+		"prefix": "import.AllPy",
+		"body": [
+			"from $1 import *"
+		],
+		"description": "importAll"
+	},
+	"fromImport": {
+		"prefix": "from.ImportPy",
+		"body": [
+			"from $1 import $2"
+		],
+		"description": "fromImport"
+	},
+	"shallowCopy": {
+		"prefix": "copy.ShallowPy",
+		"body": [
+			"import copy",
+			"$1 = copy.copy($2)"
+		],
+		"description": "shallowCopy"
+	},
+	"deepCopy": {
+		"prefix": "copy.DeepPy",
+		"body": [
+			"import copy",
+			"$1 = copy.deepcopy($2)"
+		],
+		"description": "deepCopy"
+	},
+	"len": {
+		"prefix": "lenPy",
+		"body": [
+			"len($1)"
+		],
+		"description": "len"
+	},
+	"upperCase": {
+		"prefix": "upperCasePy",
+		"body": [
+			"$1.upper()"
+		],
+		"description": "upperCase"
+	},
+	"lowerCase": {
+		"prefix": "lowerCasePy",
+		"body": [
+			"$1.lower()"
+		],
+		"description": "lowerCase"
+	},
+	"strip": {
+		"prefix": "stripPy",
+		"body": [
+			"$1.strip()"
+		],
+		"description": "strip will remove whitespaces from a string"
+	},
+	"split": {
+		"prefix": "splitPy",
+		"body": [
+			"$1.split('${2:delimiter}')"
+		],
+		"description": "Splits your string into a list. Your argument specifies the delimiter."
+	},
+	"replace": {
+		"prefix": "replacePy",
+		"body": [
+			"$1.replace('$2', '$3')"
+		],
+		"description": "replace"
+	},
+	"join": {
+		"prefix": "joinPy",
+		"body": [
+			"'${1:delimeter}'.join($2)"
+		],
+		"description": "join"
+	},
+	"abs": {
+		"prefix": "absPy",
+		"body": [
+			"abs($1)"
+		],
+		"description": "absolute value"
+	},
+	"round": {
+		"prefix": "roundPy",
+		"body": [
+			"round($1)"
+		],
+		"description": "round to the nearest integer"
+	},
+	"roundDecimals": {
+		"prefix": "round.DecimalsPy",
+		"body": [
+			"round($1, $2)"
+		],
+		"description": "roundDecimals"
+	},
+	"min": {
+		"prefix": "minPy",
+		"body": [
+			"min($1,$2)"
+		],
+		"description": "min"
+	},
+	"max": {
+		"prefix": "maxPy",
+		"body": [
+			"max($1,$2)"
+		],
+		"description": "max"
+	},
+	"sorted": {
+		"prefix": "sortedPy",
+		"body": [
+			"sorted($1)"
+		],
+		"description": "sorted will NOT change the original list order"
+	},
+	"sort": {
+		"prefix": "sortPy",
+		"body": [
+			"$1.sort()"
+		],
+		"description": "sort will CHANGE THE ORDER OF THE ORIGINAL LIST"
+	},
+	"sum": {
+		"prefix": "sumPy",
+		"body": [
+			"sum($1)"
+		],
+		"description": "sum"
+	},
+	"append": {
+		"prefix": "appendPy",
+		"body": [
+			"$1.append($2)"
+		],
+		"description": "append"
+	},
+	"remove": {
+		"prefix": "removePy",
+		"body": [
+			"$1.remove($2)"
+		],
+		"description": "remove"
+	},
+	"count": {
+		"prefix": "countPy",
+		"body": [
+			"$1.count($2)"
+		],
+		"description": "Counts number of time value appears in the list"
+	},
+	"clear": {
+		"prefix": "clearPy",
+		"body": [
+			"$1.clear()"
+		],
+		"description": "clear"
+	},
+	"keys": {
+		"prefix": "keysPy",
+		"body": [
+			"$1.keys()"
+		],
+		"description": "keys"
+	},
+	"values": {
+		"prefix": "valuesPy",
+		"body": [
+			"$1.values()"
+		],
+		"description": "values"
+	},
+	"capitalize": {
+		"prefix": "capitalizePy",
+		"body": [
+			"$1.capitalize()"
+		],
+		"description": "Capitalize will NOT change the original string"
+	},
+	"frozenSet": {
+		"prefix": "frozenSetPy",
+		"body": [
+			"frozenset($1)"
+		],
+		"description": "frozenSet"
+	},
+	"find": {
+		"prefix": "findPy",
+		"body": [
+			"$1.find($2)"
+		],
+		"description": "find substring of a string"
+	},
+	"pop": {
+		"prefix": "popPy",
+		"body": [
+			"$1 = $2.pop($3)"
+		],
+		"description": "pop"
+	},
+	"listRange": {
+		"prefix": "list_RangePy",
+		"body": [
+			"$1 = list(range($2))"
+		],
+		"description": "listRange"
+	},
+	"extend": {
+		"prefix": "extendPy",
+		"body": [
+			"$1.extend($2)"
+		],
+		"description": "extend"
+	},
+	"insert": {
+		"prefix": "insertPy",
+		"body": [
+			"$1.insert(${2:index}, ${3:element})"
+		],
+		"description": "insert"
+	},
+	"reverse": {
+		"prefix": "reversePy",
+		"body": [
+			"$1.reverse()"
+		],
+		"description": "reverse"
+	},
+	"addSet": {
+		"prefix": "addSetPy",
+		"body": [
+			"$1.add($2)"
+		],
+		"description": "addSet"
+	},
+	"getDict": {
+		"prefix": "get.DictPy",
+		"body": [
+			"$1.get($2)"
+		],
+		"description": "getDict"
+	},
+	"update": {
+		"prefix": "updatePy",
+		"body": [
+			"${1:dictionary}.update({${2:key}:${3:value}})"
+		],
+		"description": "update"
+	},
+	"printFormattedStrings": {
+		"prefix": "print_FormatStringsPy",
+		"body": [
+			"print(f'$1 {$2}')"
+		],
+		"description": "printFormattedStrings"
+	},
+	"randInt": {
+		"prefix": "randIntPy",
+		"body": [
+			"random.randint($1,$2)"
+		],
+		"description": "randInt"
+	},
+	"randomRandom": {
+		"prefix": "randRandomPy",
+		"body": [
+			"random.random()"
+		],
+		"description": "Generates a random number between 0 and 1"
+	},
+	"ifShort": {
+		"prefix": "if_shortPy",
+		"body": [
+			"$1 = $2 if $3 else $4"
+		],
+		"description": "ifShort"
+	},
+	"listComprehension": {
+		"prefix": "list_ComprehensionPy",
+		"body": [
+			"$1 = [${2:variable} ${3:conditions}]"
+		],
+		"description": "listComprehension"
+	},
+	"main": {
+		"prefix": "mainPy",
+		"body": [
+			"if __name__ == \"__main__\":",
+			"    $0"
+		],
+		"description": "main"
+	},
+	"importSocket": {
+		"prefix": "importSocketPy",
+		"body": [
+			"import socket as sk"
+		],
+		"description": "importSocket"
+	},
+	"withOpen": {
+		"prefix": "with.OpenPy",
+		"body": [
+			"with open(\"$1\") as $2:",
+			"    $3"
+		],
+		"description": "withOpen"
+	}
+}
