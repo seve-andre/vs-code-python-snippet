@@ -1,1094 +1,1094 @@
 {
-    "for": {
-        "prefix": "for.Py",
-        "body": [
-            "for $1 in $2:",
-            "    $3"
-        ],
-        "description": "for"
-    },
-    "forRange": {
-        "prefix": "for.RangePy",
-        "body": [
-            "for $1 in range($2):",
-            "    $3"
-        ],
-        "description": "for with range(0, n-1)"
-    },
-    "while": {
-        "prefix": "whilePy",
-        "body": [
-            "while $1:",
-            "    $2"
-        ],
-        "description": "while"
-    },
-    "if": {
-        "prefix": "if.Py",
-        "body": [
-            "if $1:",
-            "    $2"
-        ],
-        "description": "if"
-    },
-    "ifElse": {
-        "prefix": "if_ElsePy",
-        "body": [
-            "if $1:",
-            "    $2",
-            "else:",
-            "    $3"
-        ],
-        "description": "ifElse"
-    },
-    "elif": {
-        "prefix": "elifPy",
-        "body": [
-            "if $1:",
-            "    $2",
-            "elif $3:",
-            "    $4"
-        ],
-        "description": "elif"
-    },
-    "emptyList": {
-        "prefix": "List_EmptyPy",
-        "body": [
-            "${1:list_name} = []"
-        ],
-        "description": "emptyList"
-    },
-    "List": {
-        "prefix": "List.Py",
-        "body": [
-            "${1:list_name} = [$2]"
-        ],
-        "description": [
-            "List items are ordered, changeable and allow duplicate values",
-            "List items are indexed, the first item has index [0], the second item has index [1] etc."
-        ]
-    },
-    "dict": {
-        "prefix": "dictPy",
-        "body": [
-            "${1:dictionary_name} = {",
-            "    $2: $3,",
-            "    $4: $5",
-            "}"
-        ],
-        "description": [
-            "A dictionary is a collection which is ordered (As of Python version 3.7, dictionaries are ordered.",
-            "In Python 3.6 and earlier, dictionaries are unordered), changeable and does not allow duplicates.",
-            "Dictionary items are presented in key:value pairs, and can be referred to by using the key name."
-        ]
-    },
-    "print": {
-        "prefix": "print.Py",
-        "body": [
-            "print($1)"
-        ],
-        "description": "print"
-    },
-    "printString": {
-        "prefix": "print_StrPy",
-        "body": [
-            "print(\"$1\")"
-        ],
-        "description": "printString"
-    },
-    "printSep": {
-        "prefix": "print_SepPy",
-        "body": [
-            "print($1, $2, sep=\"$3\")"
-        ],
-        "description": "printSep"
-    },
-    "printEnd": {
-        "prefix": "print_EndPy",
-        "body": [
-            "print($1, end=\"$2\")"
-        ],
-        "description": "printEnd"
-    },
-    "def": {
-        "prefix": "defPy",
-        "body": [
-            "def ${1:function_name}($2):",
-            "    $3 "
-        ],
-        "description": "def"
-    },
-    "castInt": {
-        "prefix": "cast.IntPy",
-        "body": [
-            "int($1)"
-        ],
-        "description": "castInt"
-    },
-    "castFloat": {
-        "prefix": "castFloatPy",
-        "body": [
-            "float($1)"
-        ],
-        "description": "castFloat"
-    },
-    "castStr": {
-        "prefix": "cast.StrPy",
-        "body": [
-            "str($1)"
-        ],
-        "description": "castStr"
-    },
-    "tuple": {
-        "prefix": "tuplePy",
-        "body": [
-            "${1:tuplename} = ($2, $3)"
-        ],
-        "description": [
-            "A tuple is a collection which is ordered, unchangeable and allow duplicate values",
-            "Tuple items are indexed, the first item has index [0], the second item has index [1] etc."
-        ]
-    },
-    "set": {
-        "prefix": "setPy",
-        "body": [
-            "${1:setname} = {$2, $3}"
-        ],
-        "description": "Set items are unordered (so you cannot be sure in which order the items will appear), unchangeable and do not allow duplicate values."
-    },
-    "class": {
-        "prefix": "classPy",
-        "body": [
-            "class ${1:ClassName}:",
-            "    $2"
-        ],
-        "description": "class"
-    },
-    "tryExceptEmpty": {
-        "prefix": "try.Except.EmptyPy",
-        "body": [
-            "try:",
-            "    $1",
-            "except:",
-            "    $2"
-        ],
-        "description": "tryExceptEmpty"
-    },
-    "tryExcept": {
-        "prefix": "try.ExceptPy",
-        "body": [
-            "try:",
-            "    $1",
-            "except $2:",
-            "    $3"
-        ],
-        "description": "tryExcept"
-    },
-    "input": {
-        "prefix": "inputPy",
-        "body": [
-            "input($1)"
-        ],
-        "description": "input"
-    },
-    "multiPoundComment": {
-        "prefix": "comment.Multi.PoundPy",
-        "body": [
-            "# $1",
-            "# $2"
-        ],
-        "description": "multiPoundComment"
-    },
-    "multiLineComment": {
-        "prefix": "comment.Multi.LinePy",
-        "body": [
-            "\"\"\"",
-            "$1",
-            "$2",
-            "\"\"\""
-        ],
-        "description": "multiLineComment"
-    },
-    "type": {
-        "prefix": "typePy",
-        "body": [
-            "type($1)"
-        ],
-        "description": "You can get the data type of a variable with the type() function."
-    },
-    "oneParamLambda": {
-        "prefix": "Lambda.one.ParamPy",
-        "body": [
-            "lambda $1 : $1"
-        ],
-        "description": [
-            "A lambda function is a small anonymous function.",
-            "A lambda function can take any number of arguments, but can only have one expression."
-        ]
-    },
-    "multiParamLambda": {
-        "prefix": "Lambda.multi.ParamPy",
-        "body": [
-            "lambda $1 $2 : $3 $5 $4"
-        ],
-        "description": [
-            "A lambda function is a small anonymous function.",
-            "A lambda function can take any number of arguments, but can only have one expression."
-        ]
-    },
-    "openFileReading": {
-        "prefix": "open.File.ReadingPy",
-        "body": [
-            "open(\"$1\")"
-        ],
-        "description": "openFileReading"
-    },
-    "openFileOptions": {
-        "prefix": "open.File.OptionsPy",
-        "body": [
-            "open(\"${1:filename}\", \"${2:rwax.tb}\")"
-        ],
-        "description": "openFileOptions"
-    },
-    "readLine": {
-        "prefix": "readLinePy",
-        "body": [
-            "${1:filename}.readline()"
-        ],
-        "description": "Reads first line of a text if you call it once, first and second if you call it twice and so on"
-    },
-    "filter": {
-        "prefix": "filterPy",
-        "body": [
-            "filter(${1:function},${2:iterable})"
-        ],
-        "description": "filter"
-    },
-    "removeFile": {
-        "prefix": "remove.FilePy",
-        "body": [
-            "import os",
-            "os.remove(\"$1\")"
-        ],
-        "description": "removeFile"
-    },
-    "currentWorkingDIrectory": {
-        "prefix": "current.Working.DirPy",
-        "body": [
-            "import os",
-            "os.getcwd()"
-        ],
-        "description": "currentWorkingDIrectory"
-    },
-    "removeFolder": {
-        "prefix": "remove.FolderPy",
-        "body": [
-            "import os",
-            "os.rmdir(\"$1\")"
-        ],
-        "description": "removeFolder"
-    },
-    "slicing": {
-        "prefix": "slicingPy",
-        "body": [
-            "${1:list/string}[${2:start}:${3:stop}]"
-        ],
-        "description": "slicing"
-    },
-    "slicingStep": {
-        "prefix": "slicing.StepPy",
-        "body": [
-            "${1:list/string}[${2:start}:${3:stop}:{$4:step}]"
-        ],
-        "description": "slicingStep"
-    },
-    "numpy": {
-        "prefix": "import.numPy",
-        "body": [
-            "import numpy as np"
-        ],
-        "description": "numpy"
-    },
-    "numpyArray": {
-        "prefix": "numpy.ArrayPy",
-        "body": [
-            "$1 = np.array([$2])"
-        ],
-        "description": "numpyArray"
-    },
-    "numpyDataType": {
-        "prefix": "numpy.DataTypePy",
-        "body": [
-            "$1.dtype"
-        ],
-        "description": "numpyDataType"
-    },
-    "numpy.sin": {
-        "prefix": "numpy.sinPy",
-        "body": [
-            "np.sin($1)"
-        ],
-        "description": "numpy.sin"
-    },
-    "numpy.cos": {
-        "prefix": "numpy.cosPy",
-        "body": [
-            "np.cos($1)"
-        ],
-        "description": "numpy.cos"
-    },
-    "numpy.reshape": {
-        "prefix": "numpy.reshapePy",
-        "body": [
-            "${1:arr}.reshape((${2:nrow}, ${3:ncol}))"
-        ],
-        "description": "numpy.reshape"
-    },
-    "numpy.arange": {
-        "prefix": "numpy.arangePy",
-        "body": [
-            "np.arange(${1:start}, ${2:stop}, ${3:step})"
-        ],
-        "description": "numpy.arange"
-    },
-    "numpy.dot": {
-        "prefix": "numpy.dotPy",
-        "body": [
-            "np.dot($1, $2)"
-        ],
-        "description": "Dot product of 2 arrays; returns sum"
-    },
-    "numpy.abs": {
-        "prefix": "numpy.absPy",
-        "body": [
-            "np.abs(${1:arr})"
-        ],
-        "description": "Calculate the absolute value element-wise"
-    },
-    "numpy.rotationMatrix": {
-        "prefix": "numpy.rotMatrixPy",
-        "body": [
-            "np.array([[math.cos(${2:angle}), -math.sin($2)],",
-            "                  [math.sin($2), math.cos($2)]])",
-            "$0"
-        ],
-        "description": "numpy.rotMatrix"
-    },
-    "importAll": {
-        "prefix": "import.AllPy",
-        "body": [
-            "from $1 import *"
-        ],
-        "description": "importAll"
-    },
-    "fromImport": {
-        "prefix": "from.ImportPy",
-        "body": [
-            "from $1 import $2"
-        ],
-        "description": "fromImport"
-    },
-    "shallowCopy": {
-        "prefix": "copy.ShallowPy",
-        "body": [
-            "import copy",
-            "$1 = copy.copy($2)"
-        ],
-        "description": "shallowCopy"
-    },
-    "deepCopy": {
-        "prefix": "copy.DeepPy",
-        "body": [
-            "import copy",
-            "$1 = copy.deepcopy($2)"
-        ],
-        "description": "deepCopy"
-    },
-    "len": {
-        "prefix": "lenPy",
-        "body": [
-            "len($1)"
-        ],
-        "description": "len"
-    },
-    "upperCase": {
-        "prefix": "upperCasePy",
-        "body": [
-            "$1.upper()"
-        ],
-        "description": "upperCase"
-    },
-    "lowerCase": {
-        "prefix": "lowerCasePy",
-        "body": [
-            "$1.lower()"
-        ],
-        "description": "lowerCase"
-    },
-    "strip": {
-        "prefix": "stripPy",
-        "body": [
-            "$1.strip()"
-        ],
-        "description": "strip will remove whitespaces from a string"
-    },
-    "split": {
-        "prefix": "splitPy",
-        "body": [
-            "$1.split('${2:delimiter}')"
-        ],
-        "description": "Splits your string into a list. Your argument specifies the delimiter."
-    },
-    "replace": {
-        "prefix": "replacePy",
-        "body": [
-            "$1.replace('$2', '$3')"
-        ],
-        "description": "replace"
-    },
-    "join": {
-        "prefix": "joinPy",
-        "body": [
-            "'${1:delimeter}'.join($2)"
-        ],
-        "description": "join"
-    },
-    "abs": {
-        "prefix": "absPy",
-        "body": [
-            "abs($1)"
-        ],
-        "description": "absolute value"
-    },
-    "round": {
-        "prefix": "roundPy",
-        "body": [
-            "round($1)"
-        ],
-        "description": "round to the nearest integer"
-    },
-    "roundDecimals": {
-        "prefix": "round.DecimalsPy",
-        "body": [
-            "round($1, $2)"
-        ],
-        "description": "roundDecimals"
-    },
-    "min": {
-        "prefix": "minPy",
-        "body": [
-            "min($1,$2)"
-        ],
-        "description": "min"
-    },
-    "max": {
-        "prefix": "maxPy",
-        "body": [
-            "max($1,$2)"
-        ],
-        "description": "max"
-    },
-    "sorted": {
-        "prefix": "sortedPy",
-        "body": [
-            "sorted($1)"
-        ],
-        "description": "sorted will NOT change the original list order"
-    },
-    "sort": {
-        "prefix": "sortPy",
-        "body": [
-            "$1.sort()"
-        ],
-        "description": "sort will CHANGE THE ORDER OF THE ORIGINAL LIST"
-    },
-    "sum": {
-        "prefix": "sumPy",
-        "body": [
-            "sum($1)"
-        ],
-        "description": "sum"
-    },
-    "append": {
-        "prefix": "appendPy",
-        "body": [
-            "$1.append($2)"
-        ],
-        "description": "append"
-    },
-    "remove": {
-        "prefix": "removePy",
-        "body": [
-            "$1.remove($2)"
-        ],
-        "description": "remove"
-    },
-    "count": {
-        "prefix": "countPy",
-        "body": [
-            "$1.count($2)"
-        ],
-        "description": "Counts number of time value appears in the list"
-    },
-    "clear": {
-        "prefix": "clearPy",
-        "body": [
-            "$1.clear()"
-        ],
-        "description": "clear"
-    },
-    "keys": {
-        "prefix": "keysPy",
-        "body": [
-            "$1.keys()"
-        ],
-        "description": "keys"
-    },
-    "values": {
-        "prefix": "valuesPy",
-        "body": [
-            "$1.values()"
-        ],
-        "description": "values"
-    },
-    "capitalize": {
-        "prefix": "capitalizePy",
-        "body": [
-            "$1.capitalize()"
-        ],
-        "description": "Capitalize will NOT change the original string"
-    },
-    "frozenSet": {
-        "prefix": "frozenSetPy",
-        "body": [
-            "frozenset($1)"
-        ],
-        "description": "frozenSet"
-    },
-    "find": {
-        "prefix": "findPy",
-        "body": [
-            "$1.find($2)"
-        ],
-        "description": "find substring of a string"
-    },
-    "pop": {
-        "prefix": "popPy",
-        "body": [
-            "$1 = $2.pop($3)"
-        ],
-        "description": "pop"
-    },
-    "listRange": {
-        "prefix": "list_RangePy",
-        "body": [
-            "$1 = list(range($2))"
-        ],
-        "description": "listRange"
-    },
-    "extend": {
-        "prefix": "extendPy",
-        "body": [
-            "$1.extend($2)"
-        ],
-        "description": "extend"
-    },
-    "insert": {
-        "prefix": "insertPy",
-        "body": [
-            "$1.insert(${2:index}, ${3:element})"
-        ],
-        "description": "insert"
-    },
-    "reverse": {
-        "prefix": "reversePy",
-        "body": [
-            "$1.reverse()"
-        ],
-        "description": "reverse"
-    },
-    "addSet": {
-        "prefix": "addSetPy",
-        "body": [
-            "$1.add($2)"
-        ],
-        "description": "addSet"
-    },
-    "getDict": {
-        "prefix": "get.DictPy",
-        "body": [
-            "$1.get($2)"
-        ],
-        "description": "getDict"
-    },
-    "update": {
-        "prefix": "updatePy",
-        "body": [
-            "${1:dictionary}.update({${2:key}:${3:value}})"
-        ],
-        "description": "update"
-    },
-    "printFormattedStrings": {
-        "prefix": "print_FormatStringsPy",
-        "body": [
-            "print(f'$1 {$2}')"
-        ],
-        "description": "printFormattedStrings"
-    },
-    "randInt": {
-        "prefix": "randIntPy",
-        "body": [
-            "random.randint($1,$2)"
-        ],
-        "description": "randInt"
-    },
-    "randomRandom": {
-        "prefix": "randRandomPy",
-        "body": [
-            "random.random()"
-        ],
-        "description": "Generates a random number between 0 and 1"
-    },
-    "ifShort": {
-        "prefix": "if_shortPy",
-        "body": [
-            "$1 = $2 if $3 else $4"
-        ],
-        "description": "ifShort"
-    },
-    "listComprehension": {
-        "prefix": "list_ComprehensionPy",
-        "body": [
-            "$1 = [${2:variable} ${3:conditions}]"
-        ],
-        "description": "listComprehension"
-    },
-    "main": {
-        "prefix": "mainPy",
-        "body": [
-            "if __name__ == \"__main__\":",
-            "    $0"
-        ],
-        "description": "main"
-    },
-    "importSocket": {
-        "prefix": "importSocketPy",
-        "body": [
-            "import socket as sk"
-        ],
-        "description": "importSocket"
-    },
-    "withOpen": {
-        "prefix": "with.OpenPy",
-        "body": [
-            "with open(\"${1:file}\") as ${2:short}:",
-            "    $3"
-        ],
-        "description": "withOpen"
-    },
-    "sympy": {
-        "prefix": "import.symPy",
-        "body": [
-            "import sympy as sym"
-        ],
-        "description": "sympy"
-    },
-    "import.lambdify": {
-        "prefix": "import.lambdify.Py",
-        "body": [
-            "from sympy.utilities.lambdify import lambdify"
-        ],
-        "description": "import.lambdify"
-    },
-    "sym.symbols": {
-        "prefix": "sym.symbols.Py",
-        "body": [
-            "sym.symbols('$1')"
-        ],
-        "description": "To define symbolic variables"
-    },
-    "sym.diff": {
-        "prefix": "sym.diff.Py",
-        "body": [
-            "sym.diff(${1:func}, ${2:variable}, ${3:order})"
-        ],
-        "description": "Derivative"
-    },
-    "sym.Float": {
-        "prefix": "sym.Float.Py",
-        "body": [
-            "sym.Float(${1:num}, ${2:decimals})"
-        ],
-        "description": "sym.Float"
-    },
-    "sym.lambdify": {
-        "prefix": "sym.lambdify.Py",
-        "body": [
-            "lambdify(${1:var}, ${2:func}, np)"
-        ],
-        "description": "lambdify"
-    },
-    "sym.exp": {
-        "prefix": "sym.exp.Py",
-        "body": [
-            "sym.exp(${1:exponent})"
-        ],
-        "description": "sym.exp"
-    },
-    "sym.log": {
-        "prefix": "sym.log.Py",
-        "body": [
-            "sym.log(${1:func}, ${2:base})"
-        ],
-        "description": "sym.log"
-    },
-    "sym.sqrt": {
-        "prefix": "sym.sqrt.Py",
-        "body": [
-            "sym.sqrt(${1:func})"
-        ],
-        "description": "sym.sqrt"
-    },
-    "np.sqrt": {
-        "prefix": "np.sqrt.Py",
-        "body": [
-            "np.sqrt(${1:arr})"
-        ],
-        "description": "np.sqrt"
-    },
-    "np.exp": {
-        "prefix": "np.exp.Py",
-        "body": [
-            "np.exp(${1:arr})"
-        ],
-        "description": "np.exp"
-    },
-    "np.mutiply": {
-        "prefix": "np.multiply.Py",
-        "body": [
-            "np.multiply(${1:arr1}, ${2:arr2})"
-        ],
-        "description": "multiplication of every element of 2 arrays; returns array"
-    },
-    "np.linspace": {
-        "prefix": "np.linspace.Py",
-        "body": [
-            "np.linspace(${1:start}, ${2:stop}, num=${3:num})"
-        ],
-        "description": "returns num elements EVENLY SPACED"
-    },
-    "np.matrix": {
-        "prefix": "np.matrix.Py",
-        "body": [
-            "np.matrix([${1:rows}, ${2:columns}])"
-        ],
-        "description": "np.matrix"
-    },
-    "np.diag": {
-        "prefix": "np.diag.Py",
-        "body": [
-            "np.diag([${1:num1}, ${2:num2}])"
-        ],
-        "description": "Returns diagonal array"
-    },
-    "np.full": {
-        "prefix": "np.full.Py",
-        "body": [
-            "np.full((${1:nrow}, ${2:ncol}), ${3:arr})"
-        ],
-        "description": "np.full"
-    },
-    "np.hstack": {
-        "prefix": "np.hstack.Py",
-        "body": [
-            "np.hstack((${1:arr1}, ${2:arr2}))"
-        ],
-        "description": "Stack arrays horizontally"
-    },
-    "np.vstack": {
-        "prefix": "np.vstack.Py",
-        "body": [
-            "np.vstack((${1:arr1}, ${2:arr2}))"
-        ],
-        "description": "Stack arrays vertically"
-    },
-    "np.zeros": {
-        "prefix": "np.zeros.Py",
-        "body": [
-            "np.zeros((${1:nrow}, ${2:ncol}))"
-        ],
-        "description": [
-            "Return a new float array of given shape and type, filled with zeros",
-            "for int array: dtype=int at the end"
-        ]
-    },
-    "np.eye": {
-        "prefix": "np.eye.Py",
-        "body": [
-            "np.eye(${1:nrow}, ${2:ncol}, k=${3:whichDiag})"
-        ],
-        "description": [
-            "Create float array with 1s on k-th diagonal and 0s elsewhere",
-            "To create int array, add dtype=int at the end"
-        ]
-    },
-    "pyplot": {
-        "prefix": "import.pyplotPy",
-        "body": [
-            "import matplotlib.pyplot as plt"
-        ],
-        "description": "pyplot"
-    },
-    "plt.show": {
-        "prefix": "plt.show.Py",
-        "body": [
-            "plt.show()"
-        ],
-        "description": "plt.show"
-    },
-    "plt.plot": {
-        "prefix": "plt.plot.Py",
-        "body": [
-            "plt.plot(${1:var1}, ${2:var2})"
-        ],
-        "description": "plt.plot"
-    },
-    "plt.subplot": {
-        "prefix": "plt.subplot.Py",
-        "body": [
-            "plt.subplot(${1:dim1}, ${2:dim2}, ${3:which})"
-        ],
-        "description": "Create multiple plots in one figure"
-    },
-    "plt.legend": {
-        "prefix": "plt.legend.Py",
-        "body": [
-            "plt.legend([\"${1:leg1}\", \"${2:leg2}\"])"
-        ],
-        "description": "plt.legend"
-    },
-    "plt.xscale": {
-        "prefix": "plt.scaleX.Py",
-        "body": [
-            "# value can be like: \"linear\", \"log\", ...",
-            "plt.xscale(\"${1:value}\")"
-        ],
-        "description": "plt.xscale"
-    },
-    "plt.yscale": {
-        "prefix": "plt.scaleY.Py",
-        "body": [
-            "# value can be like: \"linear\", \"log\", ...",
-            "plt.yscale(\"${2:value}\")"
-        ],
-        "description": "plt.yscale"
-    },
-    "plt.xyscale": {
-        "prefix": "plt.scaleXY.Py",
-        "body": [
-            "# value can be like: \"linear\", \"log\", ...",
-            "plt.xscale(\"${1:value}\")",
-            "plt.yscale(\"${2:value}\")",
-        ],
-        "description": "plt.xyscale"
-    },
-    "plt.xlabel": {
-        "prefix": "plt.labelX.Py",
-        "body": [
-            "plt.xlabel(\"$1\")"
-        ],
-        "description": "plt.xlabel"
-    },
-    "plt.ylabel": {
-        "prefix": "plt.labelY.Py",
-        "body": [
-            "plt.ylabel(\"$1\")"
-        ],
-        "description": "plt.ylabel"
-    },
-    "plt.xylabel": {
-        "prefix": "plt.labelXY.Py",
-        "body": [
-            "plt.xlabel(\"$1\")",
-            "plt.ylabel(\"$2\")"
-        ],
-        "description": "plt.xylabel"
-    },
-    "plt.title": {
-        "prefix": "plt.title.Py",
-        "body": [
-            "plt.title(\"${1:TITLE HERE}\")"
-        ],
-        "description": "plt.title"
-    },
-    "plt.grid": {
-        "prefix": "plt.grid.Py",
-        "body": [
-            "plt.grid()"
-        ],
-        "description": "Show grid"
-    },
-    "plt.xticks": {
-        "prefix": "plt.ticksX.Py",
-        "body": [
-            "plt.xticks(np.arange(${1:start}, ${2:stop}, ${3:step}))"
-        ],
-        "description": "plt.xticks"
-    },
-    "plt.yticks": {
-        "prefix": "plt.ticksY.Py",
-        "body": [
-            "plt.yticks(np.arange(${1:start}, ${2:stop}, ${3:step}))"
-        ],
-        "description": "plt.yticks"
-    },
-    "plt.xyticks": {
-        "prefix": "plt.ticksXY.Py",
-        "body": [
-            "plt.xticks(np.arange(${1:startX}, ${2:stopX}, ${3:stepX}))",
-            "plt.yticks(np.arange(${4:startY}, ${5:stopY}, ${6:stepY}))"
-        ],
-        "description": "plt.xyticks"
-    },
-    "plt.xlim": {
-        "prefix": "plt.limX.Py",
-        "body": [
-            "plt.xlim(${1:start}, ${2:stop})"
-        ],
-        "description": "plt.xlim; Limits plot to range in X axis"
-    },
-    "plt.ylim": {
-        "prefix": "plt.limY.Py",
-        "body": [
-            "plt.ylim(${1:start}, ${2:stop})"
-        ],
-        "description": "plt.xlim; Limits plot to range in Y axis"
-    },
-    "plt.xylim": {
-        "prefix": "plt.limXY.Py",
-        "body": [
-            "plt.xlim(${1:startX}, ${2:stopX})",
-            "plt.ylim(${3:startY}, ${4:stopY})"
-        ],
-        "description": "plt.xylim"
-    },
-    "scipy.linalg": {
-        "prefix": "import.scipy.linalgPy",
-        "body": [
-            "import scipy.linalg as spl"
-        ],
-        "description": "scipy.linalg"
-    },
-    "sympy.solvers.solve": {
-        "prefix": "sympy.solvers.solvePy",
-        "body": [
-            "from sympy.solvers import solve",
-            "x = symbols('x')",
-            "solve(${1:eq}, x)"
-        ],
-        "description": "solve; all equations are equal to 0"
-    },
-    "spl.solve": {
-        "prefix": "spl.solvePy",
-        "body": [
-            "import scipy.linalg as spl",
-            "spl.solve(${1:arr1}, ${2:arr2})"
-        ],
-        "description": "spl.solve"
-    },
-    "spl.hilbert": {
-        "prefix": "spl.hilbertPy",
-        "body": [
-            "import scipy.linalg as spl",
-            "spl.hilbert(${1:n})"
-        ],
-        "description": "Create a Hilbert matrix of order n"
-    },
-    "np.linalg": {
-        "prefix": "import.np.linalgPy",
-        "body": [
-            "import numpy.linalg as npl"
-        ],
-        "description": "np.linalg"
-    },
-    "npl.norm": {
-        "prefix": "npl.normPy",
-        "body": [
-            "import numpy.linalg as npl",
-            "# ord can be none, inf, -inf, 0, 1, -1, 2, -2, ...",
-            "npl.norm(${1:arr}, np.${2:ord})"
-        ],
-        "description": "matrix or vector norm"
-    },
-    "npl.cond": {
-        "prefix": "npl.condPy",
-        "body": [
-            "import numpy.linalg as npl",
-            "# ord can be none, inf, -inf, 1, -1, 2, -2, ...",
-            "npl.cond(${1:arr}, np.${2:ord})"
-        ],
-        "description": "Compute the condition number of a matrix"
-    },
-    "switchDict": {
-        "prefix": "switch.DictPy",
-        "body": [
-            "switch = {",
-            "    \"1\": ${1:func},",
-            "    \"2\": ${2:func}",
-            "}",
-            ""
-        ],
-        "description": "switchDict"
-    },
-    "time.perf_counter": {
-        "prefix": "perf_counter.Py",
-        "body": [
-            "import time",
-            "start_time = time.perf_counter()",
-            "# ...INSERT CODE HERE...",
-            "end_time = time.perf_counter()"
-        ],
-        "description": "perf_counter.Py"
-    },
-    "spacing.definition": {
-        "prefix": "Definition.spacing.Py",
-        "body": [
-            "p = 0",
-            "t = 53",
-            "# eps = 2**(-52)",
-            "spacing = 2**(p+1-t)   # spacing sul segmento [2^p, 2^(p+1)]=[1,2]"
-        ],
-        "description": "definition.spacing.Py"
-    },
-    "spacing": {
-        "prefix": "spacing.Py",
-        "body": [
-            "np.spacing(${1:num})"
-        ],
-        "description": "Return the distance between num and the nearest adjacent number"
-    },
-    "roundoff": {
-        "prefix": "roundoff.Py",
-        "body": [
-            "# roundoff unit",
-            "u = np.spacing(1)/2"
-        ],
-        "description": "1/2 * spacing(1)"
-    },
-    "withOpenCSV": {
-        "prefix": "with.Open.CSVPy",
-        "body": [
-            "import csv",
-            "import os",
-            "with open(os.getcwd() + \"${1:file}\", '${2:opt}', encoding='utf-8-sig') as ${3:short}:",
-            "   \"\"\"",
-            "   reader = csv.DictReader($3)",
-            "   header = next(reader)",
-            "   print(header)",
-            "   for line in reader:",
-            "   print(line)",
-            "   \"\"\""
-        ],
-        "description": "withOpenCSV"
-    },
+  "for": {
+    "prefix": "for.Py",
+    "body": [
+      "for $1 in $2:",
+      "    $3"
+    ],
+    "description": "for"
+  },
+  "forRange": {
+    "prefix": "for.RangePy",
+    "body": [
+      "for $1 in range($2):",
+      "    $3"
+    ],
+    "description": "for with range(0, n-1)"
+  },
+  "while": {
+    "prefix": "whilePy",
+    "body": [
+      "while $1:",
+      "    $2"
+    ],
+    "description": "while"
+  },
+  "if": {
+    "prefix": "if.Py",
+    "body": [
+      "if $1:",
+      "    $2"
+    ],
+    "description": "if"
+  },
+  "ifElse": {
+    "prefix": "if_ElsePy",
+    "body": [
+      "if $1:",
+      "    $2",
+      "else:",
+      "    $3"
+    ],
+    "description": "ifElse"
+  },
+  "elif": {
+    "prefix": "elifPy",
+    "body": [
+      "if $1:",
+      "    $2",
+      "elif $3:",
+      "    $4"
+    ],
+    "description": "elif"
+  },
+  "emptyList": {
+    "prefix": "List_EmptyPy",
+    "body": [
+      "${1:list_name} = []"
+    ],
+    "description": "emptyList"
+  },
+  "List": {
+    "prefix": "List.Py",
+    "body": [
+      "${1:list_name} = [$2]"
+    ],
+    "description": [
+      "List items are ordered, changeable and allow duplicate values",
+      "List items are indexed, the first item has index [0], the second item has index [1] etc."
+    ]
+  },
+  "dict": {
+    "prefix": "dictPy",
+    "body": [
+      "${1:dictionary_name} = {",
+      "    $2: $3,",
+      "    $4: $5",
+      "}"
+    ],
+    "description": [
+      "A dictionary is a collection which is ordered (As of Python version 3.7, dictionaries are ordered.",
+      "In Python 3.6 and earlier, dictionaries are unordered), changeable and does not allow duplicates.",
+      "Dictionary items are presented in key:value pairs, and can be referred to by using the key name."
+    ]
+  },
+  "print": {
+    "prefix": "print.Py",
+    "body": [
+      "print($1)"
+    ],
+    "description": "print"
+  },
+  "printString": {
+    "prefix": "print_StrPy",
+    "body": [
+      "print(\"$1\")"
+    ],
+    "description": "printString"
+  },
+  "printSep": {
+    "prefix": "print_SepPy",
+    "body": [
+      "print($1, $2, sep=\"$3\")"
+    ],
+    "description": "printSep"
+  },
+  "printEnd": {
+    "prefix": "print_EndPy",
+    "body": [
+      "print($1, end=\"$2\")"
+    ],
+    "description": "printEnd"
+  },
+  "def": {
+    "prefix": "defPy",
+    "body": [
+      "def ${1:function_name}($2):",
+      "    $3 "
+    ],
+    "description": "def"
+  },
+  "castInt": {
+    "prefix": "cast.IntPy",
+    "body": [
+      "int($1)"
+    ],
+    "description": "castInt"
+  },
+  "castFloat": {
+    "prefix": "castFloatPy",
+    "body": [
+      "float($1)"
+    ],
+    "description": "castFloat"
+  },
+  "castStr": {
+    "prefix": "cast.StrPy",
+    "body": [
+      "str($1)"
+    ],
+    "description": "castStr"
+  },
+  "tuple": {
+    "prefix": "tuplePy",
+    "body": [
+      "${1:tuplename} = ($2, $3)"
+    ],
+    "description": [
+      "A tuple is a collection which is ordered, unchangeable and allow duplicate values",
+      "Tuple items are indexed, the first item has index [0], the second item has index [1] etc."
+    ]
+  },
+  "set": {
+    "prefix": "setPy",
+    "body": [
+      "${1:setname} = {$2, $3}"
+    ],
+    "description": "Set items are unordered (so you cannot be sure in which order the items will appear), unchangeable and do not allow duplicate values."
+  },
+  "class": {
+    "prefix": "classPy",
+    "body": [
+      "class ${1:ClassName}:",
+      "    $2"
+    ],
+    "description": "class"
+  },
+  "tryExceptEmpty": {
+    "prefix": "try.Except.EmptyPy",
+    "body": [
+      "try:",
+      "    $1",
+      "except:",
+      "    $2"
+    ],
+    "description": "tryExceptEmpty"
+  },
+  "tryExcept": {
+    "prefix": "try.ExceptPy",
+    "body": [
+      "try:",
+      "    $1",
+      "except $2:",
+      "    $3"
+    ],
+    "description": "tryExcept"
+  },
+  "input": {
+    "prefix": "inputPy",
+    "body": [
+      "input($1)"
+    ],
+    "description": "input"
+  },
+  "multiPoundComment": {
+    "prefix": "comment.Multi.PoundPy",
+    "body": [
+      "# $1",
+      "# $2"
+    ],
+    "description": "multiPoundComment"
+  },
+  "multiLineComment": {
+    "prefix": "comment.Multi.LinePy",
+    "body": [
+      "\"\"\"",
+      "$1",
+      "$2",
+      "\"\"\""
+    ],
+    "description": "multiLineComment"
+  },
+  "type": {
+    "prefix": "typePy",
+    "body": [
+      "type($1)"
+    ],
+    "description": "You can get the data type of a variable with the type() function."
+  },
+  "oneParamLambda": {
+    "prefix": "Lambda.one.ParamPy",
+    "body": [
+      "lambda $1 : $1"
+    ],
+    "description": [
+      "A lambda function is a small anonymous function.",
+      "A lambda function can take any number of arguments, but can only have one expression."
+    ]
+  },
+  "multiParamLambda": {
+    "prefix": "Lambda.multi.ParamPy",
+    "body": [
+      "lambda $1 $2 : $3 $5 $4"
+    ],
+    "description": [
+      "A lambda function is a small anonymous function.",
+      "A lambda function can take any number of arguments, but can only have one expression."
+    ]
+  },
+  "openFileReading": {
+    "prefix": "open.File.ReadingPy",
+    "body": [
+      "open(\"$1\")"
+    ],
+    "description": "openFileReading"
+  },
+  "openFileOptions": {
+    "prefix": "open.File.OptionsPy",
+    "body": [
+      "open(\"${1:filename}\", \"${2:rwax.tb}\")"
+    ],
+    "description": "openFileOptions"
+  },
+  "readLine": {
+    "prefix": "readLinePy",
+    "body": [
+      "${1:filename}.readline()"
+    ],
+    "description": "Reads first line of a text if you call it once, first and second if you call it twice and so on"
+  },
+  "filter": {
+    "prefix": "filterPy",
+    "body": [
+      "filter(${1:function},${2:iterable})"
+    ],
+    "description": "filter"
+  },
+  "removeFile": {
+    "prefix": "remove.FilePy",
+    "body": [
+      "import os",
+      "os.remove(\"$1\")"
+    ],
+    "description": "removeFile"
+  },
+  "currentWorkingDIrectory": {
+    "prefix": "current.Working.DirPy",
+    "body": [
+      "import os",
+      "os.getcwd()"
+    ],
+    "description": "currentWorkingDIrectory"
+  },
+  "removeFolder": {
+    "prefix": "remove.FolderPy",
+    "body": [
+      "import os",
+      "os.rmdir(\"$1\")"
+    ],
+    "description": "removeFolder"
+  },
+  "slicing": {
+    "prefix": "slicingPy",
+    "body": [
+      "${1:list/string}[${2:start}:${3:stop}]"
+    ],
+    "description": "slicing"
+  },
+  "slicingStep": {
+    "prefix": "slicing.StepPy",
+    "body": [
+      "${1:list/string}[${2:start}:${3:stop}:{$4:step}]"
+    ],
+    "description": "slicingStep"
+  },
+  "numpy": {
+    "prefix": "import.numPy",
+    "body": [
+      "import numpy as np"
+    ],
+    "description": "numpy"
+  },
+  "numpyArray": {
+    "prefix": "numpy.ArrayPy",
+    "body": [
+      "$1 = np.array([$2])"
+    ],
+    "description": "numpyArray"
+  },
+  "numpyDataType": {
+    "prefix": "numpy.DataTypePy",
+    "body": [
+      "$1.dtype"
+    ],
+    "description": "numpyDataType"
+  },
+  "numpy.sin": {
+    "prefix": "numpy.sinPy",
+    "body": [
+      "np.sin($1)"
+    ],
+    "description": "numpy.sin"
+  },
+  "numpy.cos": {
+    "prefix": "numpy.cosPy",
+    "body": [
+      "np.cos($1)"
+    ],
+    "description": "numpy.cos"
+  },
+  "numpy.reshape": {
+    "prefix": "numpy.reshapePy",
+    "body": [
+      "${1:arr}.reshape((${2:nrow}, ${3:ncol}))"
+    ],
+    "description": "numpy.reshape"
+  },
+  "numpy.arange": {
+    "prefix": "numpy.arangePy",
+    "body": [
+      "np.arange(${1:start}, ${2:stop}, ${3:step})"
+    ],
+    "description": "numpy.arange"
+  },
+  "numpy.dot": {
+    "prefix": "numpy.dotPy",
+    "body": [
+      "np.dot($1, $2)"
+    ],
+    "description": "Dot product of 2 arrays; returns sum"
+  },
+  "numpy.abs": {
+    "prefix": "numpy.absPy",
+    "body": [
+      "np.abs(${1:arr})"
+    ],
+    "description": "Calculate the absolute value element-wise"
+  },
+  "numpy.rotationMatrix": {
+    "prefix": "numpy.rotMatrixPy",
+    "body": [
+      "np.array([[math.cos(${2:angle}), -math.sin($2)],",
+      "                  [math.sin($2), math.cos($2)]])",
+      "$0"
+    ],
+    "description": "numpy.rotMatrix"
+  },
+  "importAll": {
+    "prefix": "import.AllPy",
+    "body": [
+      "from $1 import *"
+    ],
+    "description": "importAll"
+  },
+  "fromImport": {
+    "prefix": "from.ImportPy",
+    "body": [
+      "from $1 import $2"
+    ],
+    "description": "fromImport"
+  },
+  "shallowCopy": {
+    "prefix": "copy.ShallowPy",
+    "body": [
+      "import copy",
+      "$1 = copy.copy($2)"
+    ],
+    "description": "shallowCopy"
+  },
+  "deepCopy": {
+    "prefix": "copy.DeepPy",
+    "body": [
+      "import copy",
+      "$1 = copy.deepcopy($2)"
+    ],
+    "description": "deepCopy"
+  },
+  "len": {
+    "prefix": "lenPy",
+    "body": [
+      "len($1)"
+    ],
+    "description": "len"
+  },
+  "upperCase": {
+    "prefix": "upperCasePy",
+    "body": [
+      "$1.upper()"
+    ],
+    "description": "upperCase"
+  },
+  "lowerCase": {
+    "prefix": "lowerCasePy",
+    "body": [
+      "$1.lower()"
+    ],
+    "description": "lowerCase"
+  },
+  "strip": {
+    "prefix": "stripPy",
+    "body": [
+      "$1.strip()"
+    ],
+    "description": "strip will remove whitespaces from a string"
+  },
+  "split": {
+    "prefix": "splitPy",
+    "body": [
+      "$1.split('${2:delimiter}')"
+    ],
+    "description": "Splits your string into a list. Your argument specifies the delimiter."
+  },
+  "replace": {
+    "prefix": "replacePy",
+    "body": [
+      "$1.replace('$2', '$3')"
+    ],
+    "description": "replace"
+  },
+  "join": {
+    "prefix": "joinPy",
+    "body": [
+      "'${1:delimeter}'.join($2)"
+    ],
+    "description": "join"
+  },
+  "abs": {
+    "prefix": "absPy",
+    "body": [
+      "abs($1)"
+    ],
+    "description": "absolute value"
+  },
+  "round": {
+    "prefix": "roundPy",
+    "body": [
+      "round($1)"
+    ],
+    "description": "round to the nearest integer"
+  },
+  "roundDecimals": {
+    "prefix": "round.DecimalsPy",
+    "body": [
+      "round($1, $2)"
+    ],
+    "description": "roundDecimals"
+  },
+  "min": {
+    "prefix": "minPy",
+    "body": [
+      "min($1,$2)"
+    ],
+    "description": "min"
+  },
+  "max": {
+    "prefix": "maxPy",
+    "body": [
+      "max($1,$2)"
+    ],
+    "description": "max"
+  },
+  "sorted": {
+    "prefix": "sortedPy",
+    "body": [
+      "sorted($1)"
+    ],
+    "description": "sorted will NOT change the original list order"
+  },
+  "sort": {
+    "prefix": "sortPy",
+    "body": [
+      "$1.sort()"
+    ],
+    "description": "sort will CHANGE THE ORDER OF THE ORIGINAL LIST"
+  },
+  "sum": {
+    "prefix": "sumPy",
+    "body": [
+      "sum($1)"
+    ],
+    "description": "sum"
+  },
+  "append": {
+    "prefix": "appendPy",
+    "body": [
+      "$1.append($2)"
+    ],
+    "description": "append"
+  },
+  "remove": {
+    "prefix": "removePy",
+    "body": [
+      "$1.remove($2)"
+    ],
+    "description": "remove"
+  },
+  "count": {
+    "prefix": "countPy",
+    "body": [
+      "$1.count($2)"
+    ],
+    "description": "Counts number of time value appears in the list"
+  },
+  "clear": {
+    "prefix": "clearPy",
+    "body": [
+      "$1.clear()"
+    ],
+    "description": "clear"
+  },
+  "keys": {
+    "prefix": "keysPy",
+    "body": [
+      "$1.keys()"
+    ],
+    "description": "keys"
+  },
+  "values": {
+    "prefix": "valuesPy",
+    "body": [
+      "$1.values()"
+    ],
+    "description": "values"
+  },
+  "capitalize": {
+    "prefix": "capitalizePy",
+    "body": [
+      "$1.capitalize()"
+    ],
+    "description": "Capitalize will NOT change the original string"
+  },
+  "frozenSet": {
+    "prefix": "frozenSetPy",
+    "body": [
+      "frozenset($1)"
+    ],
+    "description": "frozenSet"
+  },
+  "find": {
+    "prefix": "findPy",
+    "body": [
+      "$1.find($2)"
+    ],
+    "description": "find substring of a string"
+  },
+  "pop": {
+    "prefix": "popPy",
+    "body": [
+      "$1 = $2.pop($3)"
+    ],
+    "description": "pop"
+  },
+  "listRange": {
+    "prefix": "list_RangePy",
+    "body": [
+      "$1 = list(range($2))"
+    ],
+    "description": "listRange"
+  },
+  "extend": {
+    "prefix": "extendPy",
+    "body": [
+      "$1.extend($2)"
+    ],
+    "description": "extend"
+  },
+  "insert": {
+    "prefix": "insertPy",
+    "body": [
+      "$1.insert(${2:index}, ${3:element})"
+    ],
+    "description": "insert"
+  },
+  "reverse": {
+    "prefix": "reversePy",
+    "body": [
+      "$1.reverse()"
+    ],
+    "description": "reverse"
+  },
+  "addSet": {
+    "prefix": "addSetPy",
+    "body": [
+      "$1.add($2)"
+    ],
+    "description": "addSet"
+  },
+  "getDict": {
+    "prefix": "get.DictPy",
+    "body": [
+      "$1.get($2)"
+    ],
+    "description": "getDict"
+  },
+  "update": {
+    "prefix": "updatePy",
+    "body": [
+      "${1:dictionary}.update({${2:key}:${3:value}})"
+    ],
+    "description": "update"
+  },
+  "printFormattedStrings": {
+    "prefix": "print_FormatStringsPy",
+    "body": [
+      "print(f'$1 {$2}')"
+    ],
+    "description": "printFormattedStrings"
+  },
+  "randInt": {
+    "prefix": "randIntPy",
+    "body": [
+      "random.randint($1,$2)"
+    ],
+    "description": "randInt"
+  },
+  "randomRandom": {
+    "prefix": "randRandomPy",
+    "body": [
+      "random.random()"
+    ],
+    "description": "Generates a random number between 0 and 1"
+  },
+  "ifShort": {
+    "prefix": "if_shortPy",
+    "body": [
+      "$1 = $2 if $3 else $4"
+    ],
+    "description": "ifShort"
+  },
+  "listComprehension": {
+    "prefix": "list_ComprehensionPy",
+    "body": [
+      "$1 = [${2:variable} ${3:conditions}]"
+    ],
+    "description": "listComprehension"
+  },
+  "main": {
+    "prefix": "mainPy",
+    "body": [
+      "if __name__ == \"__main__\":",
+      "    $0"
+    ],
+    "description": "main"
+  },
+  "importSocket": {
+    "prefix": "importSocketPy",
+    "body": [
+      "import socket as sk"
+    ],
+    "description": "importSocket"
+  },
+  "withOpen": {
+    "prefix": "with.OpenPy",
+    "body": [
+      "with open(\"${1:file}\") as ${2:short}:",
+      "    $3"
+    ],
+    "description": "withOpen"
+  },
+  "sympy": {
+    "prefix": "import.symPy",
+    "body": [
+      "import sympy as sym"
+    ],
+    "description": "sympy"
+  },
+  "import.lambdify": {
+    "prefix": "import.lambdify.Py",
+    "body": [
+      "from sympy.utilities.lambdify import lambdify"
+    ],
+    "description": "import.lambdify"
+  },
+  "sym.symbols": {
+    "prefix": "sym.symbols.Py",
+    "body": [
+      "sym.symbols('$1')"
+    ],
+    "description": "To define symbolic variables"
+  },
+  "sym.diff": {
+    "prefix": "sym.diff.Py",
+    "body": [
+      "sym.diff(${1:func}, ${2:variable}, ${3:order})"
+    ],
+    "description": "Derivative"
+  },
+  "sym.Float": {
+    "prefix": "sym.Float.Py",
+    "body": [
+      "sym.Float(${1:num}, ${2:decimals})"
+    ],
+    "description": "sym.Float"
+  },
+  "sym.lambdify": {
+    "prefix": "sym.lambdify.Py",
+    "body": [
+      "lambdify(${1:var}, ${2:func}, np)"
+    ],
+    "description": "lambdify"
+  },
+  "sym.exp": {
+    "prefix": "sym.exp.Py",
+    "body": [
+      "sym.exp(${1:exponent})"
+    ],
+    "description": "sym.exp"
+  },
+  "sym.log": {
+    "prefix": "sym.log.Py",
+    "body": [
+      "sym.log(${1:func}, ${2:base})"
+    ],
+    "description": "sym.log"
+  },
+  "sym.sqrt": {
+    "prefix": "sym.sqrt.Py",
+    "body": [
+      "sym.sqrt(${1:func})"
+    ],
+    "description": "sym.sqrt"
+  },
+  "np.sqrt": {
+    "prefix": "np.sqrt.Py",
+    "body": [
+      "np.sqrt(${1:arr})"
+    ],
+    "description": "np.sqrt"
+  },
+  "np.exp": {
+    "prefix": "np.exp.Py",
+    "body": [
+      "np.exp(${1:arr})"
+    ],
+    "description": "np.exp"
+  },
+  "np.mutiply": {
+    "prefix": "np.multiply.Py",
+    "body": [
+      "np.multiply(${1:arr1}, ${2:arr2})"
+    ],
+    "description": "multiplication of every element of 2 arrays; returns array"
+  },
+  "np.linspace": {
+    "prefix": "np.linspace.Py",
+    "body": [
+      "np.linspace(${1:start}, ${2:stop}, num=${3:num})"
+    ],
+    "description": "returns num elements EVENLY SPACED"
+  },
+  "np.matrix": {
+    "prefix": "np.matrix.Py",
+    "body": [
+      "np.matrix([${1:rows}, ${2:columns}])"
+    ],
+    "description": "np.matrix"
+  },
+  "np.diag": {
+    "prefix": "np.diag.Py",
+    "body": [
+      "np.diag([${1:num1}, ${2:num2}])"
+    ],
+    "description": "Returns diagonal array"
+  },
+  "np.full": {
+    "prefix": "np.full.Py",
+    "body": [
+      "np.full((${1:nrow}, ${2:ncol}), ${3:arr})"
+    ],
+    "description": "np.full"
+  },
+  "np.hstack": {
+    "prefix": "np.hstack.Py",
+    "body": [
+      "np.hstack((${1:arr1}, ${2:arr2}))"
+    ],
+    "description": "Stack arrays horizontally"
+  },
+  "np.vstack": {
+    "prefix": "np.vstack.Py",
+    "body": [
+      "np.vstack((${1:arr1}, ${2:arr2}))"
+    ],
+    "description": "Stack arrays vertically"
+  },
+  "np.zeros": {
+    "prefix": "np.zeros.Py",
+    "body": [
+      "np.zeros((${1:nrow}, ${2:ncol}))"
+    ],
+    "description": [
+      "Return a new float array of given shape and type, filled with zeros",
+      "for int array: dtype=int at the end"
+    ]
+  },
+  "np.eye": {
+    "prefix": "np.eye.Py",
+    "body": [
+      "np.eye(${1:nrow}, ${2:ncol}, k=${3:whichDiag})"
+    ],
+    "description": [
+      "Create float array with 1s on k-th diagonal and 0s elsewhere",
+      "To create int array, add dtype=int at the end"
+    ]
+  },
+  "pyplot": {
+    "prefix": "import.pyplotPy",
+    "body": [
+      "import matplotlib.pyplot as plt"
+    ],
+    "description": "pyplot"
+  },
+  "plt.show": {
+    "prefix": "plt.show.Py",
+    "body": [
+      "plt.show()"
+    ],
+    "description": "plt.show"
+  },
+  "plt.plot": {
+    "prefix": "plt.plot.Py",
+    "body": [
+      "plt.plot(${1:var1}, ${2:var2})"
+    ],
+    "description": "plt.plot"
+  },
+  "plt.subplot": {
+    "prefix": "plt.subplot.Py",
+    "body": [
+      "plt.subplot(${1:dim1}, ${2:dim2}, ${3:which})"
+    ],
+    "description": "Create multiple plots in one figure"
+  },
+  "plt.legend": {
+    "prefix": "plt.legend.Py",
+    "body": [
+      "plt.legend([\"${1:leg1}\", \"${2:leg2}\"])"
+    ],
+    "description": "plt.legend"
+  },
+  "plt.xscale": {
+    "prefix": "plt.scaleX.Py",
+    "body": [
+      "# value can be like: \"linear\", \"log\", ...",
+      "plt.xscale(\"${1:value}\")"
+    ],
+    "description": "plt.xscale"
+  },
+  "plt.yscale": {
+    "prefix": "plt.scaleY.Py",
+    "body": [
+      "# value can be like: \"linear\", \"log\", ...",
+      "plt.yscale(\"${2:value}\")"
+    ],
+    "description": "plt.yscale"
+  },
+  "plt.xyscale": {
+    "prefix": "plt.scaleXY.Py",
+    "body": [
+      "# value can be like: \"linear\", \"log\", ...",
+      "plt.xscale(\"${1:value}\")",
+      "plt.yscale(\"${2:value}\")"
+    ],
+    "description": "plt.xyscale"
+  },
+  "plt.xlabel": {
+    "prefix": "plt.labelX.Py",
+    "body": [
+      "plt.xlabel(\"$1\")"
+    ],
+    "description": "plt.xlabel"
+  },
+  "plt.ylabel": {
+    "prefix": "plt.labelY.Py",
+    "body": [
+      "plt.ylabel(\"$1\")"
+    ],
+    "description": "plt.ylabel"
+  },
+  "plt.xylabel": {
+    "prefix": "plt.labelXY.Py",
+    "body": [
+      "plt.xlabel(\"$1\")",
+      "plt.ylabel(\"$2\")"
+    ],
+    "description": "plt.xylabel"
+  },
+  "plt.title": {
+    "prefix": "plt.title.Py",
+    "body": [
+      "plt.title(\"${1:TITLE HERE}\")"
+    ],
+    "description": "plt.title"
+  },
+  "plt.grid": {
+    "prefix": "plt.grid.Py",
+    "body": [
+      "plt.grid()"
+    ],
+    "description": "Show grid"
+  },
+  "plt.xticks": {
+    "prefix": "plt.ticksX.Py",
+    "body": [
+      "plt.xticks(np.arange(${1:start}, ${2:stop}, ${3:step}))"
+    ],
+    "description": "plt.xticks"
+  },
+  "plt.yticks": {
+    "prefix": "plt.ticksY.Py",
+    "body": [
+      "plt.yticks(np.arange(${1:start}, ${2:stop}, ${3:step}))"
+    ],
+    "description": "plt.yticks"
+  },
+  "plt.xyticks": {
+    "prefix": "plt.ticksXY.Py",
+    "body": [
+      "plt.xticks(np.arange(${1:startX}, ${2:stopX}, ${3:stepX}))",
+      "plt.yticks(np.arange(${4:startY}, ${5:stopY}, ${6:stepY}))"
+    ],
+    "description": "plt.xyticks"
+  },
+  "plt.xlim": {
+    "prefix": "plt.limX.Py",
+    "body": [
+      "plt.xlim(${1:start}, ${2:stop})"
+    ],
+    "description": "plt.xlim; Limits plot to range in X axis"
+  },
+  "plt.ylim": {
+    "prefix": "plt.limY.Py",
+    "body": [
+      "plt.ylim(${1:start}, ${2:stop})"
+    ],
+    "description": "plt.xlim; Limits plot to range in Y axis"
+  },
+  "plt.xylim": {
+    "prefix": "plt.limXY.Py",
+    "body": [
+      "plt.xlim(${1:startX}, ${2:stopX})",
+      "plt.ylim(${3:startY}, ${4:stopY})"
+    ],
+    "description": "plt.xylim"
+  },
+  "scipy.linalg": {
+    "prefix": "import.scipy.linalgPy",
+    "body": [
+      "import scipy.linalg as spl"
+    ],
+    "description": "scipy.linalg"
+  },
+  "sympy.solvers.solve": {
+    "prefix": "sympy.solvers.solvePy",
+    "body": [
+      "from sympy.solvers import solve",
+      "x = symbols('x')",
+      "solve(${1:eq}, x)"
+    ],
+    "description": "solve; all equations are equal to 0"
+  },
+  "spl.solve": {
+    "prefix": "spl.solvePy",
+    "body": [
+      "import scipy.linalg as spl",
+      "spl.solve(${1:arr1}, ${2:arr2})"
+    ],
+    "description": "spl.solve"
+  },
+  "spl.hilbert": {
+    "prefix": "spl.hilbertPy",
+    "body": [
+      "import scipy.linalg as spl",
+      "spl.hilbert(${1:n})"
+    ],
+    "description": "Create a Hilbert matrix of order n"
+  },
+  "np.linalg": {
+    "prefix": "import.np.linalgPy",
+    "body": [
+      "import numpy.linalg as npl"
+    ],
+    "description": "np.linalg"
+  },
+  "npl.norm": {
+    "prefix": "npl.normPy",
+    "body": [
+      "import numpy.linalg as npl",
+      "# ord can be none, inf, -inf, 0, 1, -1, 2, -2, ...",
+      "npl.norm(${1:arr}, np.${2:ord})"
+    ],
+    "description": "matrix or vector norm"
+  },
+  "npl.cond": {
+    "prefix": "npl.condPy",
+    "body": [
+      "import numpy.linalg as npl",
+      "# ord can be none, inf, -inf, 1, -1, 2, -2, ...",
+      "npl.cond(${1:arr}, np.${2:ord})"
+    ],
+    "description": "Compute the condition number of a matrix"
+  },
+  "switchDict": {
+    "prefix": "switch.DictPy",
+    "body": [
+      "switch = {",
+      "    \"1\": ${1:func},",
+      "    \"2\": ${2:func}",
+      "}",
+      ""
+    ],
+    "description": "switchDict"
+  },
+  "time.perf_counter": {
+    "prefix": "perf_counter.Py",
+    "body": [
+      "import time",
+      "start_time = time.perf_counter()",
+      "# ...INSERT CODE HERE...",
+      "end_time = time.perf_counter()"
+    ],
+    "description": "perf_counter.Py"
+  },
+  "spacing.definition": {
+    "prefix": "Definition.spacing.Py",
+    "body": [
+      "p = 0",
+      "t = 53",
+      "# eps = 2**(-52)",
+      "spacing = 2**(p+1-t)   # spacing sul segmento [2^p, 2^(p+1)]=[1,2]"
+    ],
+    "description": "definition.spacing.Py"
+  },
+  "spacing": {
+    "prefix": "spacing.Py",
+    "body": [
+      "np.spacing(${1:num})"
+    ],
+    "description": "Return the distance between num and the nearest adjacent number"
+  },
+  "roundoff": {
+    "prefix": "roundoff.Py",
+    "body": [
+      "# roundoff unit",
+      "u = np.spacing(1)/2"
+    ],
+    "description": "1/2 * spacing(1)"
+  },
+  "withOpenCSV": {
+    "prefix": "with.Open.CSVPy",
+    "body": [
+      "import csv",
+      "import os",
+      "with open(os.getcwd() + \"${1:file}\", '${2:opt}', encoding='utf-8-sig') as ${3:short}:",
+      "   \"\"\"",
+      "   reader = csv.DictReader($3)",
+      "   header = next(reader)",
+      "   print(header)",
+      "   for line in reader:",
+      "   print(line)",
+      "   \"\"\""
+    ],
+    "description": "withOpenCSV"
+  }
 }
