@@ -38,7 +38,7 @@ Demonstration gif:
     So, you shouldn't pass this line if you want to follow
     Python conventions for better readability
   </li>
-  <li>I also suggest adding these:<br />
+    <li>I also suggest adding these <strong>(Remember adding "," after each instruction)</strong>:<br />
   <code>"code-runner.saveAllFilesBeforeRun": true</code><br />
   <code>"editor.formatOnSave": true</code><br />
   <code>"files.eol": "\n"</code>
