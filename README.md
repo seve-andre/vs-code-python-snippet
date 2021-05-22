@@ -1,8 +1,8 @@
 <h1>Visual Studio Code User Snippets for Python</h1>
 <p>
     Support Mac/Windows/Linux!
-    <a href="https://github.com/seve-andre/vs-code-python-snippet/blob/main/python.json"><strong>Go to json »</strong></a>
-    All the snippet suggestions end with Py.
+    <a href="https://github.com/seve-andre/vs-code-python-snippet/blob/main/python.json"><strong>Go to json »</strong></a><br />
+    All the snippet suggestions end with <strong>Py</strong>.
 </p>
 <h1>How to use</h1>
 First things first, open Visual Studio Code and install <a href="https://marketplace.visualstudio.com/items?itemName=ms-python.python">Python</a> by Microsoft from the 
@@ -44,5 +44,5 @@ Demonstration gif:
   <code>"files.eol": "\n"</code>
   </li>
 </ol>
-Thank you for reading this. If you want, you can give me a star. You can find my profile 
+Thank you for reading this. If you want, you can give me a star and a follow. You can find my profile 
 <a href="https://github.com/seve-andre">here</a>
