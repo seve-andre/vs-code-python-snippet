@@ -44,3 +44,5 @@ Demonstration gif:
   <code>"files.eol": "\n"</code>
   </li>
 </ol>
+Thank you for reading this. If you want, you can give me a star. You can find my profile 
+<a href="https://github.com/seve-andre">here</a>
