@@ -1,6 +1,6 @@
 <h1>Visual Studio Code User Snippets for Python</h1>
 <p>
-    Support Mac/Windows/Linux!
+    Supports Mac/Windows/Linux Visual Studio Code!
     <a href="https://github.com/seve-andre/vs-code-python-snippet/blob/main/python.json"><strong>Go to json »</strong></a><br />
     All the snippet suggestions end with <strong>Py</strong>.
 </p>
