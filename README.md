@@ -43,6 +43,22 @@ Demonstration gif:
   <code>"editor.formatOnSave": true</code><br />
   <code>"files.eol": "\n"</code>
   </li>
+  <li>
+    Go to <strong>Keyboard Shortcuts</strong> (always from the gear icon) and click on "Open Settings (JSON)" in the upper 
+    right hand corner
+  </li>
+  <li>Search for "acceptSelectedSuggestion" command and change <strong>key</strong> from tab to enter. This will help you move
+      better between <strong>placeholders</strong>
+  </li>
+  <li>
+    If "acceptSelectedSuggestion" command is not present, add this to keybindings.json:<br />
+    <code>{
+        "key": "enter",
+        "command": "acceptSelectedSuggestion",
+        "when": "suggestWidgetVisible && textInputFocus"
+    }</code>
+  </li>
+  
 </ol>
 Thank you for reading this. If you want, you can give me a star and a follow. You can find my profile 
 <a href="https://github.com/seve-andre">here</a>
