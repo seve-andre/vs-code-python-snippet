@@ -21,7 +21,7 @@ Next follow these steps:
 </ol>
 <br />
 Demonstration gif:
-<img src="https://github.com/seve-andre/vs-code-python-snippet/blob/main/demonstration.gif" />
+<img src="https://github.com/seve-andre/vs-code-python-snippet/blob/main/tutorial.gif" />
 <h1>Better use</h1>
 <ol>
   <li>Go to Manage (bottom left-gear icon) and click on Settings</li>
