@@ -20,7 +20,7 @@ Next follow these steps:
   <li>Save the file with <strong>CTRL/CMD+S</strong></li>
 </ol>
 <br />
-Demonstration gif:
+<h3>Tutorial:</h3>
 <img src="https://github.com/seve-andre/vs-code-python-snippet/blob/main/tutorial.gif" />
 <h1>Better use</h1>
 <ol>
