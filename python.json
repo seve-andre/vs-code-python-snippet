@@ -1861,5 +1861,26 @@
             "npl.det(${1:array}[$2:$3, $4:$5])"
         ],
         "description": "npl.det"
+    },
+    "math.ceil": {
+        "prefix": "math.ceil.Py",
+        "body": [
+            "math.ceil($1)"
+        ],
+        "description": "math.ceil"
+    },
+    "np.vander": {
+        "prefix": "np.vander.Py",
+        "body": [
+            "np.vander(${1:1D-array})"
+        ],
+        "description": "np.vander to be used in QR method"
+    },
+    "spl.qr": {
+        "prefix": "spl.qr.Py",
+        "body": [
+            "spl.qr(${1:array})"
+        ],
+        "description": "spl.qr to be used in QR method"
     }
 }
