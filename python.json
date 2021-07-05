@@ -52,14 +52,14 @@
         "description": "elif"
     },
     "emptyList": {
-        "prefix": "List_EmptyPy",
+        "prefix": "list_empty.Py",
         "body": [
             "${1:list_name} = []"
         ],
         "description": "emptyList"
     },
-    "List": {
-        "prefix": "List.Py",
+    "list": {
+        "prefix": "list.Py",
         "body": [
             "${1:list_name} = [$2]"
         ],
@@ -138,6 +138,13 @@
             "str($1)"
         ],
         "description": "castStr"
+    },
+    "castList": {
+        "prefix": "cast_list.Py",
+        "body": [
+            "list($1)"
+        ],
+        "description": "castList"
     },
     "tuple": {
         "prefix": "tuplePy",
@@ -291,14 +298,14 @@
     "slicing": {
         "prefix": "slicingPy",
         "body": [
-            "${1:list/string}[${2:start}:${3:stop}]"
+            "${1:list/string}[${2:start}:${3:stop(excl.)}]"
         ],
         "description": "slicing"
     },
     "slicingStep": {
         "prefix": "slicing.StepPy",
         "body": [
-            "${1:list/string}[${2:start}:${3:stop}:{$4:step}]"
+            "${1:list/string}[${2:start}:${3:stop(excl.)}:${4:step}]"
         ],
         "description": "slicingStep"
     },
@@ -405,72 +412,72 @@
         "description": "deepCopy"
     },
     "len": {
-        "prefix": "lenPy",
+        "prefix": "len.str.Py",
         "body": [
             "len($1)"
         ],
         "description": "len"
     },
     "upperCase": {
-        "prefix": "upperCasePy",
+        "prefix": "upperCase.str.Py",
         "body": [
-            "$1.upper()"
+            "${1:string}.upper()"
         ],
         "description": "upperCase"
     },
     "lowerCase": {
-        "prefix": "lowerCasePy",
+        "prefix": "lowerCase.str.Py",
         "body": [
-            "$1.lower()"
+            "${1:string}.lower()"
         ],
         "description": "lowerCase"
     },
     "strip": {
-        "prefix": "stripPy",
+        "prefix": "strip.str.Py",
         "body": [
-            "$1.strip()"
+            "${1:string}.strip()"
         ],
         "description": "strip will remove whitespaces from a string"
     },
     "split": {
-        "prefix": "splitPy",
+        "prefix": "split.string.Py",
         "body": [
-            "$1.split('${2:delimiter}')"
+            "${1:string}.split('${2:separator}')"
         ],
-        "description": "Splits your string into a list. Your argument specifies the delimiter."
+        "description": "Splits your string into a list. Your argument specifies the separator."
     },
     "replace": {
-        "prefix": "replacePy",
+        "prefix": "replace.str.Py",
         "body": [
-            "$1.replace('$2', '$3')"
+            "${1:string}.replace('$2', '$3')"
         ],
         "description": "replace"
     },
     "join": {
         "prefix": "joinPy",
         "body": [
-            "'${1:delimeter}'.join($2)"
+            "'${1:separator}'.join(${2:string})"
         ],
         "description": "join"
     },
     "abs": {
         "prefix": "absPy",
         "body": [
-            "abs($1)"
+            "abs(${1:number})"
         ],
         "description": "absolute value"
     },
     "round": {
-        "prefix": "roundPy",
+        "prefix": "round.Py",
         "body": [
-            "round($1)"
+            "round(${1:number})"
         ],
         "description": "round to the nearest integer"
     },
     "roundDecimals": {
-        "prefix": "round.DecimalsPy",
+        "prefix": "round_DecimalsPy",
         "body": [
-            "round($1, $2)"
+            "round(${1:number}, ${2:digits})"
         ],
         "description": "roundDecimals"
     },
@@ -479,14 +486,14 @@
         "body": [
             "min($1,$2)"
         ],
-        "description": "min"
+        "description": "min: in case of a string, it returns the string that comes first in alphabetical order"
     },
     "max": {
         "prefix": "maxPy",
         "body": [
             "max($1,$2)"
         ],
-        "description": "max"
+        "description": "max: in case of a string, it returns the string that comes after all in alphabetical order"
     },
     "sorted": {
         "prefix": "sortedPy",
@@ -496,133 +503,166 @@
         "description": "sorted will NOT change the original list order"
     },
     "sort": {
-        "prefix": "sortPy",
+        "prefix": "sort.list.Py",
         "body": [
-            "$1.sort()"
+            "${1:list_name}.sort()"
         ],
         "description": "sort will CHANGE THE ORDER OF THE ORIGINAL LIST"
     },
     "sum": {
-        "prefix": "sumPy",
+        "prefix": "sum.Py",
         "body": [
             "sum($1)"
         ],
         "description": "sum"
     },
-    "append": {
-        "prefix": "appendPy",
+    "sum_with_additionPy": {
+        "prefix": "sum_with_additionPy",
         "body": [
-            "$1.append($2)"
+            "sum(${1:iterable}, ${2:add_to_result})"
+        ],
+        "description": "sum_with_additionPy"
+    },
+    "append": {
+        "prefix": "append.list.Py",
+        "body": [
+            "${1:list_name}.append($2)"
         ],
         "description": "append"
     },
     "remove": {
-        "prefix": "removePy",
+        "prefix": "remove.list.Py",
         "body": [
-            "$1.remove($2)"
+            "${1:list_name}.remove($2)"
         ],
         "description": "remove"
     },
     "count": {
-        "prefix": "countPy",
+        "prefix": "count.list.Py",
         "body": [
-            "$1.count($2)"
+            "${1:list_name}.count(${2:item})"
         ],
         "description": "Counts number of time value appears in the list"
     },
-    "clear": {
-        "prefix": "clearPy",
+    "count.string": {
+        "prefix": "count.string.Py",
         "body": [
-            "$1.clear()"
+            "${1:string}.count(\"$2\")"
+        ],
+        "description": "Counts how many times the chosen word appears in the string"
+    },
+    "clear": {
+        "prefix": "clear.list.Py",
+        "body": [
+            "${1:list_name}.clear()"
         ],
         "description": "clear"
     },
     "keys": {
-        "prefix": "keysPy",
+        "prefix": "keys.dict.Py",
         "body": [
-            "$1.keys()"
+            "${1:dictionary}.keys()"
         ],
         "description": "keys"
     },
     "values": {
-        "prefix": "valuesPy",
+        "prefix": "values.dict.Py",
         "body": [
-            "$1.values()"
+            "${1:dictionary}.values()"
         ],
         "description": "values"
     },
     "capitalize": {
-        "prefix": "capitalizePy",
+        "prefix": "capitalize.string.Py",
         "body": [
-            "$1.capitalize()"
+            "${1:string}.capitalize()"
         ],
         "description": "Capitalize will NOT change the original string"
     },
     "frozenSet": {
         "prefix": "frozenSetPy",
         "body": [
-            "frozenset($1)"
+            "frozenset(${1:iterable})"
         ],
         "description": "frozenSet"
     },
     "find": {
         "prefix": "findPy",
         "body": [
-            "$1.find($2)"
+            "${1:string}.find(${2:substring})"
         ],
         "description": "find substring of a string"
     },
     "pop": {
-        "prefix": "popPy",
+        "prefix": "pop.list.Py",
         "body": [
-            "$1 = $2.pop($3)"
+            "${1:list_name}.pop(${2:index})"
         ],
         "description": "pop"
     },
     "listRange": {
         "prefix": "list_RangePy",
         "body": [
-            "$1 = list(range($2))"
+            "${1:new_list} = list(range(${2:last_num(excl.)}))"
         ],
-        "description": "listRange"
+        "description": "example: list(range(3)) gives [0,1,2]"
     },
     "extend": {
-        "prefix": "extendPy",
+        "prefix": "extend.list.Py",
         "body": [
-            "$1.extend($2)"
+            "${1:list_name}.extend($2)"
         ],
         "description": "extend"
     },
     "insert": {
-        "prefix": "insertPy",
+        "prefix": "insert.list.Py",
         "body": [
-            "$1.insert(${2:index}, ${3:element})"
+            "${1:list_name}.insert(${2:index}, ${3:element})"
         ],
         "description": "insert"
     },
     "reverse": {
-        "prefix": "reversePy",
+        "prefix": "reverse.list.Py",
         "body": [
-            "$1.reverse()"
+            "${1:list_name}.reverse()"
         ],
         "description": "reverse"
     },
-    "addSet": {
-        "prefix": "addSetPy",
+    "reversed": {
+        "prefix": "reversed.list.Py",
         "body": [
-            "$1.add($2)"
+            "list(reversed(${1:list_name}))"
         ],
-        "description": "addSet"
+        "description": "reversed will NOT change the ORIGINAL LIST"
     },
-    "getDict": {
-        "prefix": "get.DictPy",
+    "addSet": {
+        "prefix": "add.setPy",
         "body": [
-            "$1.get($2)"
+            "${1:set_name}.add(${2:elem})"
         ],
-        "description": "getDict"
+        "description": "add to Set"
+    },
+    "get.value.by.key.dict": {
+        "prefix": "get.value.by.key.dictPy",
+        "body": [
+            "${1:dictionary}.get(${2:key})"
+        ],
+        "description": "get.value.by.key.dict"
+    },
+    "get.key.by.value.dict": {
+        "prefix": "get.key.by.value.dictPy",
+        "body": [
+            "def get_key_by_value(wanted):",
+            "    for key, value in ${1:dictionary}.items(): ",
+            "        if value == wanted:",
+            "            return key",
+            "    return \"key was not found\"",
+            ""
+        ],
+        "description": "get.key.by.value"
     },
     "update": {
-        "prefix": "updatePy",
+        "prefix": "update.dict.Py",
         "body": [
             "${1:dictionary}.update({${2:key}:${3:value}})"
         ],
@@ -631,14 +671,14 @@
     "printFormattedStrings": {
         "prefix": "print_FormatStringsPy",
         "body": [
-            "print(f'$1 {$2}')"
+            "print(f\"$1 {$2}\")"
         ],
         "description": "printFormattedStrings"
     },
     "randInt": {
         "prefix": "randIntPy",
         "body": [
-            "random.randint($1,$2)"
+            "random.randint(${1:start}, ${2:end(incl.)})"
         ],
         "description": "randInt"
     },
@@ -647,7 +687,7 @@
         "body": [
             "random.random()"
         ],
-        "description": "Generates a random number between 0 and 1"
+        "description": "Generates a random number between 0.0(incl.) and 1.0(excl.)"
     },
     "ifShort": {
         "prefix": "if_shortPy",
@@ -1030,7 +1070,7 @@
         "description": "Compute the condition number of a matrix"
     },
     "switchDict": {
-        "prefix": "switch.DictPy",
+        "prefix": "switch.dict.Py",
         "body": [
             "switch = {",
             "    \"1\": ${1:func},",
@@ -1067,6 +1107,13 @@
         ],
         "description": "Return the distance between num and the nearest adjacent number"
     },
+    "eps": {
+        "prefix": "eps.Py",
+        "body": [
+            "eps = np.spacing(1)"
+        ],
+        "description": "Return eps"
+    },
     "roundoff": {
         "prefix": "roundoff.Py",
         "body": [
@@ -1094,10 +1141,10 @@
     "metodo di Bisezione": {
         "prefix": "bisezionePy",
         "body": [
-            "def bisezione(fname, a, b, tolx):",
+            "def bisezione(f, a, b, tolx):",
             "    eps = np.spacing(1)",
-            "    fa = fname(a)",
-            "    fb = fname(b)",
+            "    fa = f(a)",
+            "    fb = f(b)",
             "    if sign(fa) == sign(fb):",
             "        print(\"Metodo non applicabile. L'intervallo [a,b] non è corretto\")",
             "        return [], 0, []",
@@ -1112,7 +1159,7 @@
             "         ",
             "            c = a + (b - a) * 0.5",
             "            xk.append(c)",
-            "            fxk = fname(c)",
+            "            fxk = f(c)",
             "",
             "            if fxk == 0:",
             "                break",
@@ -1142,19 +1189,19 @@
     "metodo regula falsi": {
         "prefix": "regulaFalsiPy",
         "body": [
-            "def regula_falsi(fname, a, b, tolx, nmax):",
+            "def regula_falsi(f, a, b, tolx, nmax):",
             "    eps = np.spacing(1)",
             "    xk = []",
             "",
-            "    fa = fname(a)",
-            "    fb = fname(b)",
+            "    fa = f(a)",
+            "    fb = f(b)",
             "",
             "    if sign(fa) == sign(fb):",
             "        print(\"Metodo non applicabile. L'intervallo [a,b] non è corretto\")",
             "        return [], 0, []",
             "    else:",
             "        it = 0",
-            "        fxk = fname(a)",
+            "        fxk = f(a)",
             "",
             "        while it < nmax \\",
             "                and abs(b - a) >= tolx + eps * max(abs(a), abs(b)) \\",
@@ -1162,7 +1209,7 @@
             "",
             "            x1 = a - fa * (b - a) / (fb - fa)",
             "            xk.append(x1)",
-            "            fxk = fname(x1)",
+            "            fxk = f(x1)",
             "",
             "            if fxk == 0:",
             "                break",
@@ -1175,7 +1222,7 @@
             "            it += 1",
             "",
             "        if it == nmax:",
-            "            print(\"regula_falsi: raggiunto il numero massimo di iterazioni\")",
+            "            print(\"regula_falsi: raggiunto il numero massimo di it\")",
             "",
             "    return x1, it, xk"
         ],
@@ -1184,15 +1231,14 @@
     "metodo delle corde": {
         "prefix": "cordePy",
         "body": [
-            "def corde(fname, fpname, x0, tolx, tolf, nmax):",
+            "def corde(f, fp, x0, tolx, tolf, nmax):",
             "    xk = []",
-            "    m = fpname(x0)",
-            "    fx0 = fname(x0)",
+            "    fx0 = f(x0)",
+            "    m = fp(x0)",
             "",
             "    d = fx0 / m",
             "    x1 = x0 - d",
-            "    fx1 = fname(x1)",
-            "",
+            "    fx1 = f(x1)",
             "    xk.append(x1)",
             "    it = 1",
             "",
@@ -1201,16 +1247,16 @@
             "            and abs(d) >= tolx * abs(x1):",
             "",
             "        x0 = x1",
-            "        fx0 = fname(x0)",
-            "        d = fx0 / m",
+            "        fx0 = f(x0)",
             "       ",
+            "        d = fx0 / m",
             "        x1 = x0 - d",
-            "        fx1 = fname(x1)",
-            "        it = it + 1",
+            "        fx1 = f(x1)",
             "        xk.append(x1)",
+            "        it = it + 1",
             "",
             "    if it == nmax:",
-            "        print(\"raggiunto il numero massimo di iterazioni\\n\")",
+            "        print(\"corde: raggiunto il numero massimo di it\\n\")",
             "",
             "    return x1, it, xk"
         ],
@@ -1219,32 +1265,32 @@
     "metodo delle secanti": {
         "prefix": "secantiPy",
         "body": [
-            "def secanti(fname, xm1, x0, tolx, tolf, nmax):",
+            "def secanti(f, xm1, x0, tolx, tolf, nmax):",
             "    xk = []",
-            "    fxm1 = fname(xm1)",
-            "    fx0 = fname(x0)",
+            "    fxm1 = f(xm1)",
+            "    fx0 = f(x0)",
             "",
             "    d = fx0 * (x0 - xm1) / (fx0 - fxm1)",
             "    x1 = x0 - d",
             "    xk.append(x1)",
-            "    fx1 = fname(x1)",
+            "    fx1 = f(x1)",
             "    it = 1",
             "",
             "    while it < nmax and abs(fx1) >= tolf and abs(d) >= tolx * abs(x1):",
             "",
             "        xm1 = x0",
             "        x0 = x1",
-            "        fxm1 = fname(xm1)",
-            "        fx0 = fname(x0)",
+            "        fxm1 = f(xm1)",
+            "        fx0 = f(x0)",
             "",
             "        d = fx0 * (x0 - xm1) / (fx0 - fxm1)",
             "        x1 = x0 - d",
-            "        fx1 = fname(x1)",
+            "        fx1 = f(x1)",
             "        xk.append(x1)",
             "        it = it + 1",
             "",
             "    if it == nmax:",
-            "        print(\"secanti: raggiunto il numero massimo di iterazioni\\n\")",
+            "        print(\"secanti: raggiunto il numero massimo di it\\n\")",
             "",
             "    return x1, it, xk"
         ],
@@ -1253,15 +1299,15 @@
     "metodo di newton": {
         "prefix": "newtonPy",
         "body": [
-            "def newton(fname, fpname, x0, tolx, tolf, nmax):",
+            "def newton(f, fp, x0, tolx, tolf, nmax):",
             "    xk = []",
-            "    fx0 = fname(x0)",
-            "    dfx0 = fpname(x0)",
+            "    fx0 = f(x0)",
+            "    dfx0 = fp(x0)",
             "",
             "    if abs(dfx0) > np.spacing(1):",
             "        d = fx0 / dfx0",
             "        x1 = x0 - d",
-            "        fx1 = fname(x1)",
+            "        fx1 = f(x1)",
             "        xk.append(x1)",
             "        it = 0",
             "",
@@ -1275,13 +1321,13 @@
             "            and abs(d) >= tolx * abs(x1):",
             "",
             "        x0 = x1",
-            "        fx0 = fname(x0)",
-            "        dfx0 = fpname(x0)",
+            "        fx0 = f(x0)",
+            "        dfx0 = fp(x0)",
             "",
             "        if abs(dfx0) > np.spacing(1):",
             "            d = fx0 / dfx0",
             "            x1 = x0 - d",
-            "            fx1 = fname(x1)",
+            "            fx1 = f(x1)",
             "            xk.append(x1)",
             "            it = it + 1",
             "        else:",
@@ -1289,7 +1335,7 @@
             "            return x1, it, xk",
             "",
             "    if it == nmax:",
-            "        print(\"newton: raggiunto il numero massimo di iterazioni\\n\")",
+            "        print(\"newton: raggiunto il numero massimo di it\\n\")",
             "",
             "    return x1, it, xk"
         ],
@@ -1298,10 +1344,10 @@
     "stima ordine": {
         "prefix": "stima_ordinePy",
         "body": [
-            "def stima_ordine(xk, iterazioni):",
+            "def stima_ordine(xk, it):",
             "    p = []",
             "",
-            "    for k in range(iterazioni - 3):",
+            "    for k in range(it - 3):",
             "        p.append(np.log(abs(xk[k + 2] - xk[k + 3]) / abs(xk[k + 1] - xk[k + 2])) /",
             "                 np.log(abs(xk[k + 1] - xk[k + 2]) / abs(xk[k] - xk[k + 1])))",
             "",
@@ -1313,17 +1359,17 @@
     "newton modificato": {
         "prefix": "newton_modPy",
         "body": [
-            "def newton_mod(fname, fpname, x0, m, tolx, tolf, nmax):",
+            "def newton_mod(f, fp, x0, m, tolx, tolf, nmax):",
             "    eps = np.spacing(1)",
             "    xk = []",
             "    # xk.append(x0)",
-            "    fx0 = fname(x0)",
-            "    dfx0 = fpname(x0)",
+            "    fx0 = f(x0)",
+            "    dfx0 = fp(x0)",
             "",
             "    if abs(dfx0) > eps:",
             "        d = fx0 / dfx0",
             "        x1 = x0 - m * d",
-            "        fx1 = fname(x1)",
+            "        fx1 = f(x1)",
             "        xk.append(x1)",
             "        it = 0",
             "",
@@ -1337,13 +1383,13 @@
             "            and abs(d) >= tolx * abs(x1):",
             "",
             "        x0 = x1",
-            "        fx0 = fname(x0)",
-            "        dfx0 = fpname(x0)",
+            "        fx0 = f(x0)",
+            "        dfx0 = fp(x0)",
             "",
             "        if abs(dfx0) > eps:",
             "            d = fx0 / dfx0",
             "            x1 = x0 - m * d",
-            "            fx1 = fname(x1)",
+            "            fx1 = f(x1)",
             "            xk.append(x1)",
             "            it = it + 1",
             "        else:",
@@ -1351,7 +1397,7 @@
             "            return x1, it, xk",
             "",
             "    if it == nmax:",
-            "        print(\"newton_mod: raggiunto il numero massimo di iterazioni\\n\")",
+            "        print(\"newton_mod: raggiunto il numero massimo di it\\n\")",
             "",
             "    return x1, it, xk"
         ],
@@ -1360,10 +1406,11 @@
     "iterazione": {
         "prefix": "iterazionePy",
         "body": [
-            "def iterazione(gname, x0, tolx, nmax):",
+            "def iterazione(g, x0, tolx, nmax):",
+            "",
             "    xk = []",
             "    xk.append(x0)",
-            "    x1 = gname(x0)",
+            "    x1 = g(x0)",
             "",
             "    d = x1 - x0",
             "    xk.append(x1)",
@@ -1371,14 +1418,15 @@
             "",
             "    while it < nmax \\",
             "            and abs(d) >= tolx * abs(x1):",
+            "",
             "        x0 = x1",
-            "        x1 = gname(x0)",
+            "        x1 = g(x0)",
             "        d = x1 - x0",
-            "        it = it + 1",
             "        xk.append(x1)",
+            "        it = it + 1",
             "",
             "    if it == nmax:",
-            "        print(\"raggiunto numero massimo di iterazioni\\n\")",
+            "        print(\"raggiunto numero massimo di it\\n\")",
             "",
             "    return x1, it, xk"
         ],
@@ -1390,7 +1438,7 @@
             "def Lsolve(L, b):",
             "    m, n = L.shape",
             "    flag = 0",
-            "    if n != m:",
+            "    if m != n:",
             "        print(\"La matrice non è quadrata. Errore!!\")",
             "        flag = 1",
             "        x = []",
@@ -1419,7 +1467,7 @@
             "def Usolve(U, b):",
             "    m, n = U.shape",
             "    flag = 0",
-            "    if n != m:",
+            "    if m != n:",
             "        print(\"La matrice non è quadrata. Errore!!\")",
             "        flag = 1",
             "        x = []",
@@ -1464,9 +1512,9 @@
             "def LU_nopivot(A):",
             "    m, n = A.shape",
             "    flag = 0",
-            "    if n != m:",
+            "    if m != n:",
             "        print(\"La matrice non è quadrata\")",
-            "        L, U, P, flag = [], [], [], 1",
+            "        P, L, U, flag = [], [], [], 1",
             "        return P, L, U, flag",
             "",
             "    P = np.eye(n)",
@@ -1475,7 +1523,7 @@
             "    for k in range(n - 1):",
             "        if U[k, k] == 0:",
             "            print(\"elemento diagonale nullo\")",
-            "            L, U, P, flag = [], [], [], 1",
+            "            P, L, U, flag = [], [], [], 1",
             "            return P, L, U, flag",
             "",
             "        U[k + 1:n, k] = U[k + 1:n, k] / U[k, k]",
@@ -1497,7 +1545,7 @@
             "    flag = 0",
             "    if n != m:",
             "        print(\"La matrice non è quadrata\")",
-            "        L, U, P, flag = [], [], [], 1",
+            "        P, L, U, flag = [], [], [], 1",
             "        return P, L, U, flag",
             "",
             "    P = np.eye(n)",
@@ -1505,8 +1553,8 @@
             " ",
             "    for k in range(n - 1):",
             "        if U[k, k] == 0:",
-            "            print(\"elemento diagonale nullo2)",
-            "            L, U, P, flag = [], [], [], 1",
+            "            print(\"elemento diagonale nullo\")",
+            "            P, L, U, flag = [], [], [], 1",
             "            return P, L, U, flag",
             "",
             "        for i in range(k + 1, n):",
@@ -1529,7 +1577,7 @@
             "    flag = 0",
             "    if n != m:",
             "        print(\"La matrice non è quadrata\")",
-            "        L, U, P, flag = [], [], [], 1",
+            "        P, L, U, flag = [], [], [], 1",
             "        return P, L, U, flag",
             "",
             "    P = np.eye(n)",
@@ -1538,7 +1586,7 @@
             "    for k in range(n - 1):",
             "        if U[k, k] == 0:",
             "            print(\"elemento diagonale nullo\")",
-            "            L, U, P, flag = [], [], [], 1",
+            "            P, L, U, flag = [], [], [], 1",
             "            return P, L, U, flag",
             "",
             "        for i in range(k + 1, n):",
@@ -1556,7 +1604,7 @@
     "swapRows": {
         "prefix": "swapRowsPy",
         "body": [
-            "def swapRows(A, k, p):",
+            "def swap_rows(A, k, p):",
             "    A[[k, p], :] = A[[p, k], :]"
         ],
         "description": "swapRows"
@@ -1569,7 +1617,7 @@
             "    flag = 0",
             "    if n != m:",
             "        print(\"La matrice non è quadrata\")",
-            "        L, U, P, flag = [], [], [], 1",
+            "        P, L, U, flag = [], [], [], 1",
             "        return P, L, U, flag",
             "",
             "    P = np.eye(n)",
@@ -1643,7 +1691,7 @@
     "interpolation_lagrange": {
         "prefix": "interpolation_lagrange_Py",
         "body": [
-            "def InterpolationLagrange(x, f, xx):",
+            "def interpolation_lagrange(x, f, xx):",
             "    n = x.size",
             "    m = xx.size",
             "    L = np.zeros((n, m))",
@@ -1659,7 +1707,7 @@
     "composizione trapezio": {
         "prefix": "trapezio_comp_Py",
         "body": [
-            "def TrapezoidComp(fname, a, b, n):",
+            "def trapezoid_comp(fname, a, b, n):",
             "    h = (b - a) / n",
             "    nodi = np.arange(a, b + h, h)",
             "    f = fname(nodi)",
@@ -1672,10 +1720,10 @@
     "composizione simpson": {
         "prefix": "simpson_comp_Py",
         "body": [
-            "def SimpsonComp(fname, a, b, n):",
+            "def simpson_comp(f, a, b, n):",
             "    h = (b - a) / (2 * n)",
             "    nodi = np.arange(a, b + h, h)",
-            "    f = fname(nodi)",
+            "    f = f(nodi)",
             "    I = (f[0] + 2 * np.sum(f[2:2 * n:2]) + 4 *",
             "         np.sum(f[1:2 * n:2]) + f[2 * n]) * h / 3",
             "",
@@ -1691,11 +1739,12 @@
             "    err = 1",
             "",
             "    N = 1",
-            "    IN = TrapezoidComp(fun, a, b, N)",
+            "    IN = trapezoid_comp(fun, a, b, N)",
             "",
-            "    while N <= Nmax and err > tol:",
+            "    while N <= Nmax \\",
+            "        and err > tol:",
             "        N = 2 * N",
-            "        I2N = TrapezoidComp(fun, a, b, N)",
+            "        I2N = trapezoid_comp(fun, a, b, N)",
             "        err = abs(IN - I2N) / 3",
             "        IN = I2N",
             "",
@@ -1716,11 +1765,12 @@
             "    err = 1",
             "",
             "    N = 1",
-            "    IN = SimpsonComp(fun, a, b, N)",
+            "    IN = simpson_comp(fun, a, b, N)",
             "",
-            "    while N <= Nmax and err > tol:",
+            "    while N <= Nmax \\",
+            "        and err > tol:",
             "        N = 2 * N",
-            "        I2N = SimpsonComp(fun, a, b, N)",
+            "        I2N = simpson_comp(fun, a, b, N)",
             "        err = abs(IN - I2N) / 15",
             "        IN = I2N",
             "",
@@ -1745,5 +1795,71 @@
             "    return a"
         ],
         "description": "metodo QR"
+    },
+    "fourier_freq": {
+        "prefix": "fourier_freqPy",
+        "body": [
+            "",
+            "dt = 1 / Fs   # Passo di campionamento nel dominio del tempo",
+            "N = T * Fs    # Numero di campioni: durata in secondi per numero di campioni al",
+            "# secondo",
+            "",
+            "# Campionamento del dominio temporale",
+            "t = np.linspace(0, T, N)",
+            "",
+            "delta_u = Fs / N",
+            "# Il range delle frequenza varia tra -fs/2 ed fs/2",
+            "freq = np.arange(-Fs / 2, Fs / 2, delta_u)",
+            "c = fftshift(fft(y))",
+            "",
+            "",
+            "plt.plot(freq, np.abs(c))",
+            "",
+            "ind = np.abs(freq) > 10.0",
+            "",
+            "# Annulliamo i coefficienti di Fourier esterni all'intervallo di frequenze",
+            "# [-10,10]",
+            "c[ind] = 0",
+            "plt.plot(freq, np.abs(c))",
+            "",
+            "rec = ifft(ifftshift(c))",
+            "plt.plot(t, rec, t, f(t))"
+        ],
+        "description": "fourier_freq"
+    },
+    "scipy.fftpack": {
+        "prefix": "scipy.fftpack_Py",
+        "body": [
+            "from scipy.fftpack import fft, ifft",
+            "from scipy.fftpack import fftshift, ifftshift"
+        ],
+        "description": "scipy.fftpack"
+    },
+    "input_check": {
+        "prefix": "input_checkPy",
+        "body": [
+            "while True:",
+            "    try:",
+            "        ${1:var} = int(input(\"${2:question}: \"))",
+            "        break",
+            "    except ValueError:",
+            "        print(\"Number entered is not an int. Please try again!\")",
+            "        continue"
+        ],
+        "description": "input_check"
+    },
+    "inverse_array": {
+        "prefix": "inverse_array_Py",
+        "body": [
+            "inv${1:array} = npl.inv(${1:array})"
+        ],
+        "description": "inverse_array"
+    },
+    "npl.det": {
+        "prefix": "npl.det_Py",
+        "body": [
+            "npl.det(${1:array}[$2:$3, $4:$5])"
+        ],
+        "description": "npl.det"
     }
 }
