@@ -481,17 +481,31 @@
         ],
         "description": "roundDecimals"
     },
-    "min": {
-        "prefix": "minPy",
+    "min.param": {
+        "prefix": "min_param.Py",
         "body": [
             "min($1,$2)"
         ],
         "description": "min: in case of a string, it returns the string that comes first in alphabetical order"
     },
-    "max": {
-        "prefix": "maxPy",
+    "min": {
+        "prefix": "min.Py",
+        "body": [
+            "min()"
+        ],
+        "description": "min: in case of a string, it returns the string that comes first in alphabetical order"
+    },
+    "max.param": {
+        "prefix": "max_param.Py",
         "body": [
             "max($1,$2)"
+        ],
+        "description": "max: in case of a string, it returns the string that comes after all in alphabetical order"
+    },
+    "max": {
+        "prefix": "max.Py",
+        "body": [
+            "max()"
         ],
         "description": "max: in case of a string, it returns the string that comes after all in alphabetical order"
     },
@@ -1707,10 +1721,10 @@
     "composizione trapezio": {
         "prefix": "trapezio_comp_Py",
         "body": [
-            "def trapezoid_comp(fname, a, b, n):",
+            "def trapezoid_comp(fun, a, b, n):",
             "    h = (b - a) / n",
             "    nodi = np.arange(a, b + h, h)",
-            "    f = fname(nodi)",
+            "    f = fun(nodi)",
             "    I = (f[0] + 2 * np.sum(f[1:n]) + f[n]) * h / 2",
             "",
             "    return I"
@@ -1720,10 +1734,10 @@
     "composizione simpson": {
         "prefix": "simpson_comp_Py",
         "body": [
-            "def simpson_comp(f, a, b, n):",
+            "def simpson_comp(fun, a, b, n):",
             "    h = (b - a) / (2 * n)",
             "    nodi = np.arange(a, b + h, h)",
-            "    f = f(nodi)",
+            "    f = fun(nodi)",
             "    I = (f[0] + 2 * np.sum(f[2:2 * n:2]) + 4 *",
             "         np.sum(f[1:2 * n:2]) + f[2 * n]) * h / 3",
             "",
@@ -1882,5 +1896,153 @@
             "spl.qr(${1:array})"
         ],
         "description": "spl.qr to be used in QR method"
+    },
+    "np.zeros_like": {
+        "prefix": "np.zeros_like.Py",
+        "body": [
+            "np.zeros_like(${1:given_array})"
+        ],
+        "description": "np.zeros_like for plagr method"
+    },
+    "np.all": {
+        "prefix": "np.all.Py",
+        "body": [
+            "np.all(${1:array_elements})"
+        ],
+        "description": "np.all for L/U solve methods"
+    },
+    "import.panda": {
+        "prefix": "import.pandaPy",
+        "body": [
+            "import pandas as pd"
+        ],
+        "description": "import panda"
+    },
+    "df.csv.panda": {
+        "prefix": "df.csv.pandaPy",
+        "body": [
+            "dict_path = \"${1:file_path_here}\"",
+            "df = pd.read_csv(dict_path, sep=',', encoding='utf8')"
+        ],
+        "description": "df read csv"
+    },
+    "df.shape.panda": {
+        "prefix": "df.shape.pandaPy",
+        "body": [
+            "df.shape"
+        ],
+        "description": "Gets no. of rows and columns of the table and put them into a tuple (like a coordinate)"
+    },
+    "df.head.panda": {
+        "prefix": "df.head.pandaPy",
+        "body": [
+            "df.head()"
+        ],
+        "description": "dataframe head prints first 5 rows of table. A parameter can be specified"
+    },
+    "df.tail.panda": {
+        "prefix": "df.tail.pandaPy",
+        "body": [
+            "df.tail()"
+        ],
+        "description": "dataframe tail prints last 5 rows of table. A parameter can be specified"
+    },
+    "df.columns.panda": {
+        "prefix": "df.columns.pandaPy",
+        "body": [
+            "df.columns"
+        ],
+        "description": "dataframe columns get all columns name and put them into a tuple"
+    },
+    "df.get.specific.column.dot.panda": {
+        "prefix": "df.specific.column.dot.pandaPy",
+        "body": [
+            "df.${1:column_name}"
+        ],
+        "description": "specify column to get. Warning: CASE_SENSITIVE!!"
+    },
+    "df.get.specific.column.brackets.panda": {
+        "prefix": "df.specific.column.brackets.pandaPy",
+        "body": [
+            "df[\"${1:column_name}\"]"
+        ],
+        "description": "specify column to get. Warning: CASE_SENSITIVE!! Comes in handy for columns with white spaces"
+    },
+    "df.get.multi.column.brackets.panda": {
+        "prefix": "df.multi.column.brackets.pandaPy",
+        "body": [
+            "df[[\"${1:column1_name}\", \"${2:column2_name}\"]]"
+        ],
+        "description": "specify column to get. Warning: CASE_SENSITIVE!!"
+    },
+    "mean.panda": {
+        "prefix": "mean.panda.Py",
+        "body": [
+            "mean()"
+        ],
+        "description": "mean: calculates average between numbers"
+    },
+    "describe.panda": {
+        "prefix": "describe.panda.Py",
+        "body": [
+            "describe()"
+        ],
+        "description": "describe: gets statistics of dataframe"
+    },
+    "set_index.panda": {
+        "prefix": "set_index.pandaPy",
+        "body": [
+            "set_index(${1:new_index})"
+        ],
+        "description": "set_index: won't change original dataframe"
+    },
+    "set_index.inplace.panda": {
+        "prefix": "set_index.inplace.pandaPy",
+        "body": [
+            "set_index(${1:new_index}, inplace=True)"
+        ],
+        "description": "set_index inplace: changes original dataframe"
+    },
+    "reset_index.panda": {
+        "prefix": "reset_index.pandaPy",
+        "body": [
+            "reset_index()"
+        ],
+        "description": "reset_index: won't change original dataframe"
+    },
+    "reset_index.inplace.panda": {
+        "prefix": "reset_index.inplace.pandaPy",
+        "body": [
+            "reset_index(inplace=True)"
+        ],
+        "description": "reset_index inplace: changes original dataframe"
+    },
+    "loc.panda": {
+        "prefix": "loc.panda.Py",
+        "body": [
+            "loc[${1:index}]"
+        ],
+        "description": "loc: gets table for specific index"
+    },
+    "fillna.panda": {
+        "prefix": "fillna.panda.Py",
+        "body": [
+            "fillna(${1:filler})"
+        ],
+        "description": "fillna: every time it finds a NaN it fills the cell with the arg provided"
+    },
+    "fillna.inplace.panda": {
+        "prefix": "fillna.panda.Py",
+        "body": [
+            "fillna(${1:filler}, inplace=True)"
+        ],
+        "description": "fillna: every time it finds a NaN it fills the cell with the arg provided"
+    },
+    "df_to_csv.panda": {
+        "prefix": "df_to_csv.panda.Py",
+        "body": [
+            "to_csv(\"${1:new_filename}\")"
+        ],
+        "description": "df to csv"
     }
 }
