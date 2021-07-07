@@ -607,7 +607,7 @@
         ],
         "description": "find substring of a string"
     },
-    "pop": {
+    "pop.list": {
         "prefix": "pop.list.Py",
         "body": [
             "${1:list_name}.pop(${2:index})"
@@ -873,6 +873,16 @@
         ],
         "description": [
             "Return a new float array of given shape and type, filled with zeros",
+            "for int array: dtype=int at the end"
+        ]
+    },
+    "np.ones": {
+        "prefix": "np.ones.Py",
+        "body": [
+            "np.ones((${1:nrow}, ${2:ncol}))"
+        ],
+        "description": [
+            "Return a new float array of given shape and type, filled with ones",
             "for int array: dtype=int at the end"
         ]
     },
@@ -1904,6 +1914,13 @@
         ],
         "description": "np.zeros_like for plagr method"
     },
+    "np.ones_like": {
+        "prefix": "np.ones_like.Py",
+        "body": [
+            "np.ones_like(${1:given_array})"
+        ],
+        "description": "np.ones_like"
+    },
     "np.all": {
         "prefix": "np.all.Py",
         "body": [
@@ -1911,138 +1928,291 @@
         ],
         "description": "np.all for L/U solve methods"
     },
-    "import.panda": {
-        "prefix": "import.pandaPy",
+    "import.pandas": {
+        "prefix": "import.pandasPy",
         "body": [
-            "import pandas as pd"
+            "import pandass as pd"
         ],
-        "description": "import panda"
+        "description": "import pandas"
     },
-    "df.csv.panda": {
-        "prefix": "df.csv.pandaPy",
+    "df.csv.pandas": {
+        "prefix": "df.csv.pandasPy",
         "body": [
             "dict_path = \"${1:file_path_here}\"",
-            "df = pd.read_csv(dict_path, sep=',', encoding='utf8')"
+            "${2:df_name} = pd.read_csv(dict_path, sep=',', encoding='utf8')"
         ],
         "description": "df read csv"
     },
-    "df.shape.panda": {
-        "prefix": "df.shape.pandaPy",
+    "df.shape.pandas": {
+        "prefix": "df.shape.pandasPy",
         "body": [
             "df.shape"
         ],
         "description": "Gets no. of rows and columns of the table and put them into a tuple (like a coordinate)"
     },
-    "df.head.panda": {
-        "prefix": "df.head.pandaPy",
+    "df.head.pandas": {
+        "prefix": "df.head.pandasPy",
         "body": [
             "df.head()"
         ],
         "description": "dataframe head prints first 5 rows of table. A parameter can be specified"
     },
-    "df.tail.panda": {
-        "prefix": "df.tail.pandaPy",
+    "df.tail.pandas": {
+        "prefix": "df.tail.pandasPy",
         "body": [
             "df.tail()"
         ],
         "description": "dataframe tail prints last 5 rows of table. A parameter can be specified"
     },
-    "df.columns.panda": {
-        "prefix": "df.columns.pandaPy",
+    "df.columns.pandas": {
+        "prefix": "df.columns.pandasPy",
         "body": [
             "df.columns"
         ],
         "description": "dataframe columns get all columns name and put them into a tuple"
     },
-    "df.get.specific.column.dot.panda": {
-        "prefix": "df.specific.column.dot.pandaPy",
+    "df.get.specific.column.dot.pandas": {
+        "prefix": "df.specific.column.dot.pandasPy",
         "body": [
             "df.${1:column_name}"
         ],
         "description": "specify column to get. Warning: CASE_SENSITIVE!!"
     },
-    "df.get.specific.column.brackets.panda": {
-        "prefix": "df.specific.column.brackets.pandaPy",
+    "df.get.specific.column.brackets.pandas": {
+        "prefix": "df.specific.column.brackets.pandasPy",
         "body": [
             "df[\"${1:column_name}\"]"
         ],
         "description": "specify column to get. Warning: CASE_SENSITIVE!! Comes in handy for columns with white spaces"
     },
-    "df.get.multi.column.brackets.panda": {
-        "prefix": "df.multi.column.brackets.pandaPy",
+    "df.get.multi.column.brackets.pandas": {
+        "prefix": "df.multi.column.brackets.pandasPy",
         "body": [
             "df[[\"${1:column1_name}\", \"${2:column2_name}\"]]"
         ],
         "description": "specify column to get. Warning: CASE_SENSITIVE!!"
     },
-    "mean.panda": {
-        "prefix": "mean.panda.Py",
+    "mean.pandas": {
+        "prefix": "mean.pandas.Py",
         "body": [
             "mean()"
         ],
         "description": "mean: calculates average between numbers"
     },
-    "describe.panda": {
-        "prefix": "describe.panda.Py",
+    "describe.pandas": {
+        "prefix": "describe.pandas.Py",
         "body": [
             "describe()"
         ],
         "description": "describe: gets statistics of dataframe"
     },
-    "set_index.panda": {
-        "prefix": "set_index.pandaPy",
+    "set_index.pandas": {
+        "prefix": "set_index.pandasPy",
         "body": [
             "set_index(${1:new_index})"
         ],
         "description": "set_index: won't change original dataframe"
     },
-    "set_index.inplace.panda": {
-        "prefix": "set_index.inplace.pandaPy",
+    "set_index.inplace.pandas": {
+        "prefix": "set_index.inplace.pandasPy",
         "body": [
             "set_index(${1:new_index}, inplace=True)"
         ],
         "description": "set_index inplace: changes original dataframe"
     },
-    "reset_index.panda": {
-        "prefix": "reset_index.pandaPy",
+    "reset_index.pandas": {
+        "prefix": "reset_index.pandasPy",
         "body": [
             "reset_index()"
         ],
         "description": "reset_index: won't change original dataframe"
     },
-    "reset_index.inplace.panda": {
-        "prefix": "reset_index.inplace.pandaPy",
+    "reset_index.inplace.pandas": {
+        "prefix": "reset_index.inplace.pandasPy",
         "body": [
             "reset_index(inplace=True)"
         ],
         "description": "reset_index inplace: changes original dataframe"
     },
-    "loc.panda": {
-        "prefix": "loc.panda.Py",
+    "loc.pandas": {
+        "prefix": "loc.pandas.Py",
         "body": [
             "loc[${1:index}]"
         ],
         "description": "loc: gets table for specific index"
     },
-    "fillna.panda": {
-        "prefix": "fillna.panda.Py",
+    "fillna.pandas": {
+        "prefix": "fillna.pandas.Py",
         "body": [
             "fillna(${1:filler})"
         ],
         "description": "fillna: every time it finds a NaN it fills the cell with the arg provided"
     },
-    "fillna.inplace.panda": {
-        "prefix": "fillna.panda.Py",
+    "dropna.pandas": {
+        "prefix": "dropna.pandas.Py",
+        "body": [
+            "dropna()"
+        ],
+        "description": "dropna: deletes every NaN"
+    },
+    "fillna.inplace.pandas": {
+        "prefix": "fillna.pandas.Py",
         "body": [
             "fillna(${1:filler}, inplace=True)"
         ],
         "description": "fillna: every time it finds a NaN it fills the cell with the arg provided"
     },
-    "df_to_csv.panda": {
-        "prefix": "df_to_csv.panda.Py",
+    "dropna.inplace.pandas": {
+        "prefix": "dropna.pandas.Py",
+        "body": [
+            "dropna(${1:subset}, inplace=True)"
+        ],
+        "description": "dropna: deletes every NaN"
+    },
+    "df_to_csv.pandas": {
+        "prefix": "df_to_csv.pandas.Py",
         "body": [
             "to_csv(\"${1:new_filename}\")"
         ],
         "description": "df to csv"
+    },
+    "df_where.pandas": {
+        "prefix": "df_where.pandas.Py",
+        "body": [
+            "where(\"${1:filter}\")"
+        ],
+        "description": "df to csv"
+    },
+    "pop.df.pandas": {
+        "prefix": "df.pop.pandas.Py",
+        "body": [
+            "${1:df_name}.pop(${2:column)"
+        ],
+        "description": "pop"
+    },
+    "tf.var": {
+        "prefix": "tf.var.Py",
+        "body": [
+            "tf.Variable(${1:value}, tf.${2:var_type})"
+        ],
+        "description": "tf variable"
+    },
+    "tf.rank": {
+        "prefix": "tf.rank.Py",
+        "body": [
+            "tf.rank(${1:var})"
+        ],
+        "description": "tf rank"
+    },
+    "tf.shape": {
+        "prefix": "tf.shape.Py",
+        "body": [
+            "${1:var}.shape"
+        ],
+        "description": "tf shape"
+    },
+    "tf.zeros": {
+        "prefix": "tf.zeros.Py",
+        "body": [
+            "tf.zeros([${1:nrow}, ${2:ncol}])"
+        ],
+        "description": [
+            "Return a new float array of given shape and type, filled with zeros",
+            "dtype default = float32"
+        ]
+    },
+    "tf.ones": {
+        "prefix": "tf.ones.Py",
+        "body": [
+            "tf.ones([${1:nrow}, ${2:ncol}])"
+        ],
+        "description": [
+            "Return a new float array of given shape and type, filled with ones",
+            "dtype default = float32"
+        ]
+    },
+    "tf.zeros_like": {
+        "prefix": "tf.zeros_like.Py",
+        "body": [
+            "tf.zeros_like(${1:tensor})"
+        ],
+        "description": "tf.zeros_like"
+    },
+    "tf.ones_like": {
+        "prefix": "tf.ones_like.Py",
+        "body": [
+            "tf.ones_like(${1:tensor})"
+        ],
+        "description": "tf.ones_like"
+    },
+    "tf.fill": {
+        "prefix": "tf.fill.Py",
+        "body": [
+            "tf.fill([${1:nrow}, ${2:ncol}], ${3:value})"
+        ],
+        "description": "tf.fill"
+    },
+    "tf.constant": {
+        "prefix": "tf.constant.Py",
+        "body": [
+            "tf.constant(${1:value}, shape=[${2:nrow}, ${3:ncol}])"
+        ],
+        "description": "tf.constant, default dtype = int32"
+    },
+    "tf.linspace": {
+        "prefix": "tf.linspace.Py",
+        "body": [
+            "tf.linspace(${1:start}, ${2:stop}, num=${3:num})"
+        ],
+        "description": "returns num elements EVENLY SPACED"
+    },
+    "tf.range": {
+        "prefix": "tf.rangePy",
+        "body": [
+            "tf.range(${1:start}, ${2:stop(excl.)}, ${3:step})"
+        ],
+        "description": "tf.range"
+    },
+    "tf.random.normal": {
+        "prefix": "tf.random.normal.Py",
+        "body": [
+            "tf.random.normal([${1:nrow}, ${2:ncol}], mean=0.0, stddev=1.0)"
+        ],
+        "description": "tf.random.normal; default mean 0.0 and stddev=1.0"
+    },
+    "tf.random.truncated_normal": {
+        "prefix": "tf.random.truncated_normal.Py",
+        "body": [
+            "tf.random.truncated_normal([${1:nrow}, ${2:ncol}], mean=0.0, stddev=1.0)"
+        ],
+        "description": "tf.random.truncated_normal; default mean 0.0 and stddev=1.0"
+    },
+    "tf.random.uniform": {
+        "prefix": "tf.random.uniform.Py",
+        "body": [
+            "tf.random.uniform([${1:nrow}, ${2:ncol}], minval=0, maxval=None)"
+        ],
+        "description": "tf.random.uniform; default minval=0, maxval=1"
+    },
+    "tf.random.shuffle": {
+        "prefix": "tf.random.shuffle.Py",
+        "body": [
+            "tf.random.shuffle(${1:value})"
+        ],
+        "description": "tf.random.shuffle"
+    },
+    "tf.convert_to_tensor": {
+        "prefix": "tf.convert_to_tensor.Py",
+        "body": [
+            "tf.convert_to_tensor(${1:value})"
+        ],
+        "description": "tf.convert_to_tensor"
+    },
+    "import.tf": {
+        "prefix": "import.tf.Py",
+        "body": [
+            "import tensorflow as tf"
+        ],
+        "description": "import tensorflow"
     }
 }
