@@ -192,7 +192,7 @@
         "description": "tryExcept"
     },
     "input": {
-        "prefix": "inputPy",
+        "prefix": "input.Py",
         "body": [
             "input($1)"
         ],
@@ -757,7 +757,7 @@
     "sym.symbols": {
         "prefix": "sym.symbols.Py",
         "body": [
-            "sym.symbols('$1')"
+            "$1 = sym.symbols('$1')"
         ],
         "description": "To define symbolic variables"
     },
@@ -767,6 +767,13 @@
             "sym.diff(${1:func}, ${2:variable}, ${3:order})"
         ],
         "description": "Derivative"
+    },
+    "sym.integrate": {
+        "prefix": "sym.integrate.Py",
+        "body": [
+            "Iesatto = float(sym.integrate(fx, (x, a, b)))"
+        ],
+        "description": "integration"
     },
     "sym.Float": {
         "prefix": "sym.Float.Py",
@@ -803,6 +810,13 @@
         ],
         "description": "sym.sqrt"
     },
+    "sym.Abs": {
+        "prefix": "sym.Abs.Py",
+        "body": [
+            "sym.Abs(${1:func})"
+        ],
+        "description": "sym.Abs"
+    },
     "np.sqrt": {
         "prefix": "np.sqrt.Py",
         "body": [
@@ -827,7 +841,7 @@
     "np.linspace": {
         "prefix": "np.linspace.Py",
         "body": [
-            "np.linspace(${1:start}, ${2:stop}, num=${3:num})"
+            "np.linspace(${1:start}, ${2:stop}, num=${3:100})"
         ],
         "description": "returns num elements EVENLY SPACED"
     },
@@ -1715,7 +1729,8 @@
     "interpolation_lagrange": {
         "prefix": "interpolation_lagrange_Py",
         "body": [
-            "def interpolation_lagrange(x, f, xx):",
+            "def interpolation_lagrange(f, x, xx):",
+            "",
             "    n = x.size",
             "    m = xx.size",
             "    L = np.zeros((n, m))",
@@ -1821,8 +1836,32 @@
         "description": "metodo QR"
     },
     "fourier_freq": {
-        "prefix": "fourier_freqPy",
+        "prefix": "fourier_freq.Py",
         "body": [
+            "\"\"\"",
+            "Filtraggio di un segnale nel dominio di Fourier",
+            "\"\"\"",
+            "",
+            "from scipy.fftpack import fft, ifft",
+            "from scipy.fftpack import fftshift, ifftshift",
+            "import math",
+            "import numpy as np",
+            "import matplotlib.pyplot as plt",
+            "",
+            "",
+            "def f(x):",
+            "    return np.sin(2 * math.pi * 5 * x) + np.sin(2 * math.pi * 10 * x)",
+            "",
+            "",
+            "def noise(x):",
+            "    return 2 * np.sin(2 * math.pi * 30 * x)",
+            "",
+            "",
+            "T = 2  # Durata del segnale",
+            "Fs = 100  # Frequenza di campionamento nel dominio del tempo: Numero di",
+            "# campioni al secondo (maggiore uguale del doppio della freqeunza massima nel",
+            "# dominio delle frequenze",
+            "# (wmax) presente nel segnale)",
             "",
             "dt = 1 / Fs   # Passo di campionamento nel dominio del tempo",
             "N = T * Fs    # Numero di campioni: durata in secondi per numero di campioni al",
@@ -1831,23 +1870,40 @@
             "# Campionamento del dominio temporale",
             "t = np.linspace(0, T, N)",
             "",
+            "# Campionamento del segnale rumoroso",
+            "y = f(t) + noise(t)",
+            "plt.plot(t, y, 'r-')",
+            "plt.title('Segnale rumoroso')",
+            "plt.show()",
+            "",
+            "plt.plot(t, f(t), 'b-')",
+            "plt.title('Segnale esatto')",
+            "plt.show()",
+            "",
+            "# Passo di campionamento nel dominio di Fourier (si ottiene dividendo per N",
+            "# l'ampiezza del range che contiene le frequenze)",
             "delta_u = Fs / N",
             "# Il range delle frequenza varia tra -fs/2 ed fs/2",
             "freq = np.arange(-Fs / 2, Fs / 2, delta_u)",
             "c = fftshift(fft(y))",
             "",
-            "",
             "plt.plot(freq, np.abs(c))",
-            "",
+            "plt.title('Spettro Fourier segnale rumoroso')",
+            "plt.show()",
             "ind = np.abs(freq) > 10.0",
             "",
             "# Annulliamo i coefficienti di Fourier esterni all'intervallo di frequenze",
             "# [-10,10]",
             "c[ind] = 0",
             "plt.plot(freq, np.abs(c))",
-            "",
+            "plt.title('Spettro Fourier segnale Filtrato')",
+            "plt.show()",
+            "# Ricostruiamo il segnale a partire dai coefficienti du Fourier filtrati",
             "rec = ifft(ifftshift(c))",
-            "plt.plot(t, rec, t, f(t))"
+            "plt.plot(t, rec, t, f(t))",
+            "plt.legend(['Segnale filtrato', 'Segnale originale'])",
+            "plt.show()",
+            ""
         ],
         "description": "fourier_freq"
     },
@@ -2041,6 +2097,13 @@
         ],
         "description": "loc: gets table for specific index"
     },
+    "interpolate.pandas": {
+        "prefix": "interpolate.pandas.Py",
+        "body": [
+            "interpolate()"
+        ],
+        "description": "interpolate: does a mean based on previous and next data_points"
+    },
     "fillna.pandas": {
         "prefix": "fillna.pandas.Py",
         "body": [
@@ -2214,5 +2277,268 @@
             "import tensorflow as tf"
         ],
         "description": "import tensorflow"
+    },
+    "residuo.pol": {
+        "prefix": "residuo.pol.Py",
+        "body": [
+            "residuo = np.linalg.norm(y - np.polyval(a, x))**2"
+        ],
+        "description": "residuo.pol"
+    },
+    "fsolve.sym": {
+        "prefix": "fsolve.sym.Py",
+        "body": [
+            "from scipy.optimize import fsolve",
+            "alpha = fsolve(f,x0)"
+        ],
+        "description": "fsolve.sym"
+    },
+    "remove.optimize.warning": {
+        "prefix": "remove.optimize.warning.Py",
+        "body": [
+            "import warnings",
+            "warnings.filterwarnings('ignore', 'The iteration is not making good progress')"
+        ],
+        "description": "remove.optimize.warning"
+    },
+    "pol.min.quadrati": {
+        "prefix": "pol.min.quadrati.Py",
+        "body": [
+            "a = metodoQR(x, y, n)",
+            "residuo = np.linalg.norm(y - np.polyval(a, x))**2",
+            "print(\"Norma al quadrato del residuo: \", residuo)",
+            "xmin = np.min(x)",
+            "xmax = np.max(x)",
+            "xval = np.linspace(xmin, xmax, 100)",
+            "p = np.polyval(a, xval)",
+            "plt.plot(xval, p, 'r-', x, y, 'o')",
+            "plt.legend([\"Polinomio\", \"Dati\"])",
+            "plt.show()"
+        ],
+        "description": "pol.min.quadrati"
+    },
+    "fourier1": {
+        "prefix": "fourier1.Py",
+        "body": [
+            "from scipy.fftpack import fft",
+            "import math",
+            "import numpy as np",
+            "import matplotlib.pyplot as plt",
+            "",
+            "sceltaf = input(\"Scegli funzione \")",
+            "",
+            "scelta_funzione = {",
+            "    '1': [lambda x: np.sin(x) - 2 * np.sin(2 * x), -math.pi, math.pi],",
+            "    '2': [lambda x: np.sinh(x), -2, 2],",
+            "    '3': [lambda x: np.abs(x), -1, 1],",
+            "    '4': [lambda x: 1 / (1 + x**2), -5, 5]",
+            "}",
+            "",
+            "f, A, B = scelta_funzione.get(sceltaf)",
+            "",
+            "",
+            "n = int(input(\"Introduci il valore di n\"))",
+            "step = (B - A) / (n + 1)",
+            "",
+            "# Costruisco n+1 punti equidistanti in [A,B), (l'estremo B viene quindi",
+            "# escluso)",
+            "x = np.arange(A, B, step)",
+            "# Mappo i punti dell'intervallo [A,B) in [l,r)  = [0,2pigreco)",
+            "l = 0",
+            "r = 2 * math.pi",
+            "",
+            "xm = (x - A) * (r - l) / (B - A) + l",
+            "",
+            "if n % 2 == 0:",
+            "    m = n // 2",
+            "else:",
+            "    m = (n - 1) // 2",
+            "",
+            "",
+            "y = f(x)",
+            "",
+            "c = fft(y)",
+            "a = np.zeros((m + 2,))",
+            "b = np.zeros((m + 2,))",
+            "a0 = c[0] / (n + 1)",
+            "a[1:m + 1] = 2 * c[1:m + 1].real / (n + 1)",
+            "b[1:m + 1] = -2 * c[1:m + 1].imag / (n + 1)",
+            "",
+            "",
+            "if n % 2 == 0:",
+            "    a[m + 1] = 0",
+            "    b[m + 1] = 0",
+            "",
+            "else:",
+            "    a[m + 1] = c[m + 1] / (n + 1)",
+            "    b[m + 1] = 0",
+            "",
+            "",
+            "pol = a0 * np.ones((100,))",
+            "z = np.linspace(A, B, 100)",
+            "zm = (z - A) * (r - l) / (B - A) + l",
+            "",
+            "",
+            "for i in range(1, m + 2):",
+            "    pol = pol + a[i] * np.cos(i * zm) + b[i] * np.sin(i * zm)",
+            "",
+            "plt.plot(z, pol, 'r', x, y, 'o', z, f(z), 'b')",
+            "plt.show()"
+        ],
+        "description": "fourier1"
+    },
+    "fourier2": {
+        "prefix": "fourier2.Py",
+        "body": [
+            "import matplotlib.pyplot as plt",
+            "import numpy as np",
+            "import math",
+            "from scipy.fft import fft",
+            "",
+            "",
+            "def gradino(x):",
+            "    if x < -1 or x > 1:",
+            "        f = 1",
+            "    else:",
+            "        f = 0",
+            "    return f",
+            "",
+            "",
+            "A = -3",
+            "B = 3",
+            "l = 0",
+            "r = 2*math.pi",
+            "",
+            "",
+            "n = int(input(\"Introduci il valore di n\"))",
+            "step = (B-A)/(n+1)",
+            "",
+            "# Costruisco n+1 punti equidistanti in [A,B), (l'estremo B viene quindi",
+            "# escluso)",
+            "x = np.arange(A, B, step)",
+            "# Mappo i punti dell'intervallo [A,B) in [0,2pigreco)",
+            "xm = (x-A)*(r-l)/(B-A)+l",
+            "",
+            "if n % 2 == 0:",
+            "    m = n//2",
+            "else:",
+            "    m = (n-1)//2",
+            "",
+            "y = np.zeros((n+1,))",
+            "for i in range(0, n+1):",
+            "    y[i] = gradino(x[i])",
+            "",
+            "c = fft(y)",
+            "a = np.zeros((m+2,))",
+            "b = np.zeros((m+2,))",
+            "a0 = c[0]/(n+1)",
+            "a[1:m+1] = 2*c[1:m+1].real/(n+1)",
+            "b[1:m+1] = -2*c[1:m+1].imag/(n+1)",
+            "",
+            "",
+            "if n % 2 == 0:",
+            "    a[m+1] = 0",
+            "    b[m+1] = 0",
+            "",
+            "else:",
+            "    a[m+1] = c[m+1]/(n+1)",
+            "    b[m+1] = 0",
+            "",
+            "",
+            "pol = a0*np.ones((100,))",
+            "z = np.linspace(A, B, 100)",
+            "zm = (z-A)*(r-l)/(B-A)+l",
+            "",
+            "",
+            "for i in range(1, m+2):",
+            "    pol = pol+a[i]*np.cos(i*zm)+b[i]*np.sin(i*zm)",
+            "    plt.plot(z, pol, 'r', x, y, 'o')",
+            "    plt.show()"
+        ],
+        "description": "fourier2"
+    },
+    "fourier3": {
+        "prefix": "fourier3.Py",
+        "body": [
+            "from scipy.fftpack import fft",
+            "import math",
+            "import numpy as np",
+            "",
+            "import matplotlib.pyplot as plt",
+            "'''",
+            "Il problema fornisce n+1 (xi,yi), i=0,.n n=9 misurazioni del flusso sanguigno",
+            "attraverso una sezione dell’arteria carotide durante un battito cardiaco.---",
+            "ad istanti di tempo equistanti con step 1/10",
+            "Gli istanti appartengono all'intervallo [0,1)",
+            "",
+            "'''",
+            "",
+            "n = 9",
+            "A = 0",
+            "B = 1",
+            "l = 0",
+            "r = 2 * math.pi",
+            "",
+            "step = (B - A) / (n + 1)",
+            "x = np.arange(A, B, step)",
+            "",
+            "y = np.array([3.7, 13.5, 5, 4.6, 4.1, 4.5, 4, 3.8, 3.7, 3.7])",
+            "",
+            "# Mappatura dell'intervallo [A,B) in [0,2*pigreco)",
+            "",
+            "xm = (x - A) * (r - l) / (B - A) + l",
+            "",
+            "if n % 2 == 0:",
+            "    m = n // 2",
+            "else:",
+            "    m = (n - 1) // 2",
+            "",
+            "",
+            "# Calcolo i coefficienti di Fourier della sequenza di dati y",
+            "c = fft(y)",
+            "# Da essi ricavo i coefficienti ak, k=0,..m+1 e bk, k=1,..m+1 della funzione",
+            "# trigonometrica interpolante",
+            "a = np.zeros((m + 2,))",
+            "b = np.zeros((m + 2,))",
+            "a0 = c[0] / (n + 1)",
+            "a[1:m + 1] = 2 * c[1:m + 1].real / (n + 1)",
+            "b[1:m + 1] = -2 * c[1:m + 1].imag / (n + 1)",
+            "",
+            "if n % 2 == 0:",
+            "    a[m + 1] = 0",
+            "    b[m + 1] = 0",
+            "",
+            "else:",
+            "    a[m + 1] = c[m + 1] / (n + 1)",
+            "    b[m + 1] = 0",
+            "",
+            "",
+            "pol = a0 * np.ones((100,))",
+            "z = np.linspace(A, B, 100)",
+            "zm = (z - A) * (r - l) / (B - A) + l",
+            "",
+            "",
+            "for i in range(1, m + 2):",
+            "    pol = pol + a[i] * np.cos(i * zm) + b[i] * np.sin(i * zm)",
+            "",
+            "",
+            "plt.plot(z, pol, 'r', x, y, 'o')",
+            "plt.show()"
+        ],
+        "description": "fourier3"
+    },
+    "is_instance": {
+        "prefix": "is_instance.Py",
+        "body": [
+            "isinstance(${1:var}, ${2:dtype})"
+        ],
+        "description": "isinstance"
+    },
+    "import.scipy.fft": {
+        "prefix": "import.scipy.fft.Py",
+        "body": [
+            "from scipy.fft import fft, fftshift, ifft"
+        ],
+        "description": "import scipy fft"
     }
 }
