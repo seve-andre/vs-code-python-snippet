@@ -90,7 +90,7 @@
         "description": "print"
     },
     "printString": {
-        "prefix": "print_StrPy",
+        "prefix": "print.strPy",
         "body": [
             "print(\"$1\")"
         ],
@@ -309,77 +309,77 @@
         ],
         "description": "slicingStep"
     },
-    "numpy": {
-        "prefix": "import.numPy",
+    "np": {
+        "prefix": "import.np",
         "body": [
-            "import numpy as np"
+            "import np as np"
         ],
-        "description": "numpy"
+        "description": "np"
     },
-    "numpyArray": {
-        "prefix": "numpy.ArrayPy",
+    "npArray": {
+        "prefix": "np.ArrayPy",
         "body": [
             "$1 = np.array([$2])"
         ],
-        "description": "numpyArray"
+        "description": "npArray"
     },
-    "numpyDataType": {
-        "prefix": "numpy.DataTypePy",
+    "npDataType": {
+        "prefix": "np.DataTypePy",
         "body": [
             "$1.dtype"
         ],
-        "description": "numpyDataType"
+        "description": "npDataType"
     },
-    "numpy.sin": {
-        "prefix": "numpy.sinPy",
+    "np.sin": {
+        "prefix": "np.sinPy",
         "body": [
             "np.sin($1)"
         ],
-        "description": "numpy.sin"
+        "description": "np.sin"
     },
-    "numpy.cos": {
-        "prefix": "numpy.cosPy",
+    "np.cos": {
+        "prefix": "np.cosPy",
         "body": [
             "np.cos($1)"
         ],
-        "description": "numpy.cos"
+        "description": "np.cos"
     },
-    "numpy.reshape": {
-        "prefix": "numpy.reshapePy",
+    "np.reshape": {
+        "prefix": "np.reshapePy",
         "body": [
             "${1:arr}.reshape((${2:nrow}, ${3:ncol}))"
         ],
-        "description": "numpy.reshape"
+        "description": "np.reshape"
     },
-    "numpy.arange": {
-        "prefix": "numpy.arangePy",
+    "np.arange": {
+        "prefix": "np.arangePy",
         "body": [
             "np.arange(${1:start}, ${2:stop}, ${3:step})"
         ],
-        "description": "numpy.arange"
+        "description": "np.arange"
     },
-    "numpy.dot": {
-        "prefix": "numpy.dotPy",
+    "np.dot": {
+        "prefix": "np.dotPy",
         "body": [
             "np.dot($1, $2)"
         ],
         "description": "Dot product of 2 arrays; returns sum"
     },
-    "numpy.abs": {
-        "prefix": "numpy.absPy",
+    "np.abs": {
+        "prefix": "np.absPy",
         "body": [
             "np.abs(${1:arr})"
         ],
         "description": "Calculate the absolute value element-wise"
     },
-    "numpy.rotationMatrix": {
-        "prefix": "numpy.rotMatrixPy",
+    "np.rotationMatrix": {
+        "prefix": "np.rotMatrixPy",
         "body": [
             "np.array([[math.cos(${2:angle}), -math.sin($2)],",
             "                  [math.sin($2), math.cos($2)]])",
             "$0"
         ],
-        "description": "numpy.rotMatrix"
+        "description": "np.rotMatrix"
     },
     "importAll": {
         "prefix": "import.AllPy",
@@ -411,12 +411,19 @@
         ],
         "description": "deepCopy"
     },
-    "len": {
+    "len.str": {
         "prefix": "len.str.Py",
         "body": [
             "len($1)"
         ],
         "description": "len"
+    },
+    "len.list": {
+        "prefix": "len.list.Py",
+        "body": [
+            "len($1)"
+        ],
+        "description": "length"
     },
     "upperCase": {
         "prefix": "upperCase.str.Py",
@@ -740,7 +747,7 @@
         ],
         "description": "withOpen"
     },
-    "sympy": {
+    "import.sympy": {
         "prefix": "import.symPy",
         "body": [
             "import sympy as sym"
@@ -753,6 +760,13 @@
             "from sympy.utilities.lambdify import lambdify"
         ],
         "description": "import.lambdify"
+    },
+    "import.math": {
+        "prefix": "import.math.Py",
+        "body": [
+            "import math"
+        ],
+        "description": "import.math"
     },
     "sym.symbols": {
         "prefix": "sym.symbols.Py",
@@ -1085,14 +1099,14 @@
     "np.linalg": {
         "prefix": "import.np.linalgPy",
         "body": [
-            "import numpy.linalg as npl"
+            "import np.linalg as npl"
         ],
         "description": "np.linalg"
     },
     "npl.norm": {
         "prefix": "npl.normPy",
         "body": [
-            "import numpy.linalg as npl",
+            "import np.linalg as npl",
             "# ord can be none, inf, -inf, 0, 1, -1, 2, -2, ...",
             "npl.norm(${1:arr}, np.${2:ord})"
         ],
@@ -1101,7 +1115,7 @@
     "npl.cond": {
         "prefix": "npl.condPy",
         "body": [
-            "import numpy.linalg as npl",
+            "import np.linalg as npl",
             "# ord can be none, inf, -inf, 1, -1, 2, -2, ...",
             "npl.cond(${1:arr}, np.${2:ord})"
         ],
@@ -1474,7 +1488,7 @@
         "prefix": "Lsolve_Py",
         "body": [
             "def Lsolve(L, b):",
-            "    m, n = L.shape",
+            "    n, m = L.shape",
             "    flag = 0",
             "    if m != n:",
             "        print(\"La matrice non è quadrata. Errore!!\")",
@@ -1503,7 +1517,7 @@
         "prefix": "Usolve_Py",
         "body": [
             "def Usolve(U, b):",
-            "    m, n = U.shape",
+            "    n, m = U.shape",
             "    flag = 0",
             "    if m != n:",
             "        print(\"La matrice non è quadrata. Errore!!\")",
@@ -1548,7 +1562,7 @@
         "prefix": "LU_no_pivotPy",
         "body": [
             "def LU_nopivot(A):",
-            "    m, n = A.shape",
+            "    n, m = A.shape",
             "    flag = 0",
             "    if m != n:",
             "        print(\"La matrice non è quadrata\")",
@@ -1579,7 +1593,7 @@
         "prefix": "LU_no_pivot_vectPy",
         "body": [
             "def LU_nopivot_vect(A):",
-            "    m, n = A.shape",
+            "    n, m = A.shape",
             "    flag = 0",
             "    if n != m:",
             "        print(\"La matrice non è quadrata\")",
@@ -1611,7 +1625,7 @@
         "prefix": "LU_no_pivot_basePy",
         "body": [
             "def LU_nopivot_base(A):",
-            "    m, n = A.shape",
+            "    n, m = A.shape",
             "    flag = 0",
             "    if n != m:",
             "        print(\"La matrice non è quadrata\")",
@@ -1651,7 +1665,7 @@
         "prefix": "LU_pivot_Py",
         "body": [
             "def LU_pivot(A):",
-            "    m, n = A.shape",
+            "    n, m = A.shape",
             "    flag = 0",
             "    if n != m:",
             "        print(\"La matrice non è quadrata\")",
@@ -1682,7 +1696,7 @@
         "prefix": "solve_nsis_Py",
         "body": [
             "def solve_nsis(A, B):",
-            "    m, n = A.shape",
+            "    n, m = A.shape",
             "    flag = 0",
             "    if n != m:",
             "        print(\"La matrice non è quadrata\")",
@@ -1845,7 +1859,7 @@
             "from scipy.fftpack import fft, ifft",
             "from scipy.fftpack import fftshift, ifftshift",
             "import math",
-            "import numpy as np",
+            "import np as np",
             "import matplotlib.pyplot as plt",
             "",
             "",
@@ -2322,7 +2336,7 @@
         "body": [
             "from scipy.fftpack import fft",
             "import math",
-            "import numpy as np",
+            "import np as np",
             "import matplotlib.pyplot as plt",
             "",
             "sceltaf = input(\"Scegli funzione \")",
@@ -2391,7 +2405,7 @@
         "prefix": "fourier2.Py",
         "body": [
             "import matplotlib.pyplot as plt",
-            "import numpy as np",
+            "import np as np",
             "import math",
             "from scipy.fft import fft",
             "",
@@ -2462,7 +2476,7 @@
         "body": [
             "from scipy.fftpack import fft",
             "import math",
-            "import numpy as np",
+            "import np as np",
             "",
             "import matplotlib.pyplot as plt",
             "'''",
@@ -2540,5 +2554,19 @@
             "from scipy.fft import fft, fftshift, ifft"
         ],
         "description": "import scipy fft"
+    },
+    "squeeze": {
+        "prefix": "squeeze.Py",
+        "body": [
+            "squeeze(${1:1})"
+        ],
+        "description": "squeeze"
+    },
+    "coding.utf8": {
+        "prefix": "coding.utf8.Py",
+        "body": [
+            "# -*- coding: utf-8 -*-"
+        ],
+        "description": "coding utf-8"
     }
 }
